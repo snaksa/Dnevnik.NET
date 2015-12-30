@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DnevnikDB" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Class">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Number" Type="Int32" Nullable="false" />
+    <Property Name="Letter" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Students" Relationship="Self.FK_Students_Classes" FromRole="Classes" ToRole="Students" />
+    <NavigationProperty Name="Teachers" Relationship="Self.FK_Teachers_Classes" FromRole="Classes" ToRole="Teachers" />
+    <NavigationProperty Name="Schedules" Relationship="DnevnikDB.FK_Schedule_Classes" FromRole="Class" ToRole="Schedule" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Number" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Note" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Class_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Class" Relationship="Self.FK_Students_Classes" FromRole="Students" ToRole="Classes" />
+    <NavigationProperty Name="Grades" Relationship="DnevnikDB.FK_Grades_Students" FromRole="Student" ToRole="Grade" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Teacher">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Class_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Class" Relationship="Self.FK_Teachers_Classes" FromRole="Teachers" ToRole="Classes" />
+  </EntityType>
+  <Association Name="FK_Students_Classes">
+    <End Role="Classes" Type="Self.Class" Multiplicity="1" />
+    <End Role="Students" Type="Self.Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Classes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Students">
+        <PropertyRef Name="Class_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Teachers_Classes">
+    <End Role="Classes" Type="Self.Class" Multiplicity="1" />
+    <End Role="Teachers" Type="Self.Teacher" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Classes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Teachers">
+        <PropertyRef Name="Class_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DnevnikEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Classes" EntityType="Self.Class" />
+    <EntitySet Name="Students" EntityType="Self.Student" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Teachers" EntityType="Self.Teacher" />
+    <AssociationSet Name="FK_Students_Classes" Association="Self.FK_Students_Classes">
+      <End Role="Classes" EntitySet="Classes" />
+      <End Role="Students" EntitySet="Students" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Teachers_Classes" Association="Self.FK_Teachers_Classes">
+      <End Role="Classes" EntitySet="Classes" />
+      <End Role="Teachers" EntitySet="Teachers" />
+    </AssociationSet>
+    <EntitySet Name="Subjects" EntityType="DnevnikDB.Subject" />
+    <EntitySet Name="Schedules" EntityType="DnevnikDB.Schedule" />
+    <AssociationSet Name="FK_Schedule_Classes" Association="DnevnikDB.FK_Schedule_Classes">
+      <End Role="Class" EntitySet="Classes" />
+      <End Role="Schedule" EntitySet="Schedules" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Schedule_Subjects" Association="DnevnikDB.FK_Schedule_Subjects">
+      <End Role="Subject" EntitySet="Subjects" />
+      <End Role="Schedule" EntitySet="Schedules" />
+    </AssociationSet>
+    <EntitySet Name="Grades" EntityType="DnevnikDB.Grade" />
+    <AssociationSet Name="FK_Grades_Students" Association="DnevnikDB.FK_Grades_Students">
+      <End Role="Student" EntitySet="Students" />
+      <End Role="Grade" EntitySet="Grades" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Grades_Subjects" Association="DnevnikDB.FK_Grades_Subjects">
+      <End Role="Subject" EntitySet="Subjects" />
+      <End Role="Grade" EntitySet="Grades" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Subject">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Schedules" Relationship="DnevnikDB.FK_Schedule_Subjects" FromRole="Subject" ToRole="Schedule" />
+    <NavigationProperty Name="Grades" Relationship="DnevnikDB.FK_Grades_Subjects" FromRole="Subject" ToRole="Grade" />
+  </EntityType>
+  <EntityType Name="Schedule">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Day" Type="Int32" Nullable="false" />
+    <Property Name="Period" Type="Int32" Nullable="false" />
+    <Property Name="Class_id" Type="Int32" Nullable="false" />
+    <Property Name="Subject_id" Type="Int32" Nullable="false" />
+    <Property Name="Semester" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Class" Relationship="DnevnikDB.FK_Schedule_Classes" FromRole="Schedule" ToRole="Class" />
+    <NavigationProperty Name="Subject" Relationship="DnevnikDB.FK_Schedule_Subjects" FromRole="Schedule" ToRole="Subject" />
+  </EntityType>
+  <Association Name="FK_Schedule_Classes">
+    <End Type="DnevnikDB.Class" Role="Class" Multiplicity="1" />
+    <End Type="DnevnikDB.Schedule" Role="Schedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Class">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Schedule">
+        <PropertyRef Name="Class_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Schedule_Subjects">
+    <End Type="DnevnikDB.Subject" Role="Subject" Multiplicity="1" />
+    <End Type="DnevnikDB.Schedule" Role="Schedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subject">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Schedule">
+        <PropertyRef Name="Subject_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Grade">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Student_id" Type="Int32" Nullable="false" />
+    <Property Name="Subject_id" Type="Int32" Nullable="false" />
+    <Property Name="Grade_month" Type="Int32" Nullable="false" />
+    <Property Name="Grade1" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Student" Relationship="DnevnikDB.FK_Grades_Students" FromRole="Grade" ToRole="Student" />
+    <NavigationProperty Name="Subject" Relationship="DnevnikDB.FK_Grades_Subjects" FromRole="Grade" ToRole="Subject" />
+  </EntityType>
+  <Association Name="FK_Grades_Students">
+    <End Type="DnevnikDB.Student" Role="Student" Multiplicity="1" />
+    <End Type="DnevnikDB.Grade" Role="Grade" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Grade">
+        <PropertyRef Name="Student_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Grades_Subjects">
+    <End Type="DnevnikDB.Subject" Role="Subject" Multiplicity="1" />
+    <End Type="DnevnikDB.Grade" Role="Grade" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subject">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Grade">
+        <PropertyRef Name="Subject_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

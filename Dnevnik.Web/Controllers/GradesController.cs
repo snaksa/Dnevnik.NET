@@ -1,0 +1,66 @@
+﻿using Dnevnik.Data;
+using Dnevnik.Web.ViewModels;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace Dnevnik.Web.Controllers
+{
+    public class GradesController : BaseController
+    {
+        [HttpGet]
+        public ActionResult Show(int? semester, int? id)
+        {
+            if (semester == null)
+            {
+                var subjects = DB.GetClassSubjects(this.CurrentUser.Class_id);
+                return View(subjects);
+            }
+            else if (semester == 1)
+            {
+                return ShowFirstSemesterGrades(1, id);
+            }
+            else
+            {
+
+            }
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult ShowFirstSemesterGrades(int class_id, int? subject_id)
+        {
+            var grades = DB.GetFirstSemesterGrades(this.CurrentUser.Class_id, subject_id);
+            foreach (var grade in grades)
+            {
+                grade.Grades = new string[7];
+                grade.Grades[0] = String.Join(",", grade.GradesArray.Where(g => g.Month == 9).Select(g => g.Grade).ToArray());
+                grade.Grades[1] = String.Join(",", grade.GradesArray.Where(g => g.Month == 10).Select(g => g.Grade).ToArray());
+                grade.Grades[2] = String.Join(",", grade.GradesArray.Where(g => g.Month == 11).Select(g => g.Grade).ToArray());
+                grade.Grades[3] = String.Join(",", grade.GradesArray.Where(g => g.Month == 12).Select(g => g.Grade).ToArray());
+                grade.Grades[4] = String.Join(",", grade.GradesArray.Where(g => g.Month == 1).Select(g => g.Grade).ToArray());
+                grade.Grades[5] = String.Join(",", grade.GradesArray.Where(g => g.Month == 21).Select(g => g.Grade).ToArray());
+            }
+
+            var vm = new GradesViewModel()
+            {
+                Students = grades,
+                Subject_id = subject_id
+            };
+
+
+            return View("FirstSemesterGrades", vm);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SaveFirstSemesterGrades(GradesViewModel vm)
+        {
+            //work fine
+            //save to db
+            return RedirectToAction("Show", new { semester = 1, id = vm.Subject_id });
+        }
+    }
+}
