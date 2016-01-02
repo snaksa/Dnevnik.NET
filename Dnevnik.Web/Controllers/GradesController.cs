@@ -24,7 +24,7 @@ namespace Dnevnik.Web.Controllers
             }
             else
             {
-
+                return ShowSecondSemesterGrades(2, id);
             }
             return View();
         }
@@ -32,7 +32,7 @@ namespace Dnevnik.Web.Controllers
         [HttpGet]
         public ActionResult ShowFirstSemesterGrades(int class_id, int? subject_id)
         {
-            var grades = DB.GetFirstSemesterGrades(this.CurrentUser.Class_id, subject_id);
+            var grades = DB.GetGrades(this.CurrentUser.Class_id, subject_id);
             foreach (var grade in grades)
             {
                 grade.Grades = new string[7];
@@ -47,20 +47,52 @@ namespace Dnevnik.Web.Controllers
             var vm = new GradesViewModel()
             {
                 Students = grades,
-                Subject_id = subject_id
+                Subject_id = subject_id,
+                Semester = 1
             };
-
 
             return View("FirstSemesterGrades", vm);
         }
 
+        public ActionResult ShowSecondSemesterGrades(int class_id, int? subject_id)
+        {
+            var grades = DB.GetGrades(this.CurrentUser.Class_id, subject_id);
+            foreach (var grade in grades)
+            {
+                grade.Grades = new string[7];
+                grade.Grades[0] = String.Join(",", grade.GradesArray.Where(g => g.Month == 2).Select(g => g.Grade).ToArray());
+                grade.Grades[1] = String.Join(",", grade.GradesArray.Where(g => g.Month == 3).Select(g => g.Grade).ToArray());
+                grade.Grades[2] = String.Join(",", grade.GradesArray.Where(g => g.Month == 4).Select(g => g.Grade).ToArray());
+                grade.Grades[3] = String.Join(",", grade.GradesArray.Where(g => g.Month == 5).Select(g => g.Grade).ToArray());
+                grade.Grades[4] = String.Join(",", grade.GradesArray.Where(g => g.Month == 6).Select(g => g.Grade).ToArray());
+                grade.Grades[5] = String.Join(",", grade.GradesArray.Where(g => g.Month == 22).Select(g => g.Grade).ToArray());
+                grade.Grades[6] = String.Join(",", grade.GradesArray.Where(g => g.Month == 23).Select(g => g.Grade).ToArray());
+            }
+
+            var vm = new GradesViewModel()
+            {
+                Students = grades,
+                Subject_id = subject_id,
+                Semester = 2
+            };
+
+            return View("SecondSemesterGrades", vm);
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult SaveFirstSemesterGrades(GradesViewModel vm)
+        public ActionResult SaveGrades(GradesViewModel vm)
         {
-            //work fine
-            //save to db
-            return RedirectToAction("Show", new { semester = 1, id = vm.Subject_id });
+            try
+            {
+                DB.AddGradesToDB(vm.Students, vm.Semester, vm.Subject_id.Value);
+                TempData["success"] = "1";
+            }
+            catch(Exception ex)
+            {
+                TempData["success"] = "0";
+            }
+            return RedirectToAction("Show", new { semester = vm.Semester, id = vm.Subject_id });
         }
     }
 }

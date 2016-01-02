@@ -8,3 +8,13 @@ E:\Windows\Dnevnik\Dnevnik.Data\bin\Debug\EntityFramework.SqlServer.xml
 E:\Windows\Dnevnik\Dnevnik.Data\obj\Debug\Dnevnik.Data.dll
 E:\Windows\Dnevnik\Dnevnik.Data\obj\Debug\Dnevnik.Data.pdb
 E:\Windows\Dnevnik\Dnevnik.Data\obj\Debug\Dnevnik.Data.csprojResolveAssemblyReference.cache
+E:\Windows\Dnevnik.NET\Dnevnik.Data\obj\Debug\Dnevnik.Data.dll
+E:\Windows\Dnevnik.NET\Dnevnik.Data\bin\Debug\Dnevnik.Data.dll.config
+E:\Windows\Dnevnik.NET\Dnevnik.Data\bin\Debug\Dnevnik.Data.dll
+E:\Windows\Dnevnik.NET\Dnevnik.Data\bin\Debug\Dnevnik.Data.pdb
+E:\Windows\Dnevnik.NET\Dnevnik.Data\bin\Debug\EntityFramework.dll
+E:\Windows\Dnevnik.NET\Dnevnik.Data\bin\Debug\EntityFramework.SqlServer.dll
+E:\Windows\Dnevnik.NET\Dnevnik.Data\bin\Debug\EntityFramework.xml
+E:\Windows\Dnevnik.NET\Dnevnik.Data\bin\Debug\EntityFramework.SqlServer.xml
+E:\Windows\Dnevnik.NET\Dnevnik.Data\obj\Debug\Dnevnik.Data.pdb
+E:\Windows\Dnevnik.NET\Dnevnik.Data\obj\Debug\Dnevnik.Data.csprojResolveAssemblyReference.cache

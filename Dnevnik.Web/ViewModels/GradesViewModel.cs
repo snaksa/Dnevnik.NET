@@ -10,5 +10,6 @@ namespace Dnevnik.Web.ViewModels
     {
         public List<StudentGradesViewModel> Students { get; set; }
         public int? Subject_id { get; set; }
+        public int Semester { get; set; }
     }
 }

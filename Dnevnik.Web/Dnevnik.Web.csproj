@@ -254,6 +254,7 @@
     <Content Include="Views\Schedule\Show.cshtml" />
     <Content Include="Views\Grades\Show.cshtml" />
     <Content Include="Views\Grades\FirstSemesterGrades.cshtml" />
+    <Content Include="Views\Grades\SecondSemesterGrades.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
