@@ -490,7 +490,16 @@ font-size: 19px;
     color: yellow;
 }
 
+.tableButton{
+    color: #000;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
 
+.tableButton:hover{
+    color: green;
+}
 
 
 

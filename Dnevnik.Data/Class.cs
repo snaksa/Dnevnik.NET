@@ -16,17 +16,19 @@ namespace Dnevnik.Data
     {
         public Class()
         {
-            this.Students = new HashSet<Student>();
             this.Teachers = new HashSet<Teacher>();
             this.Schedules = new HashSet<Schedule>();
+            this.Attendances = new HashSet<Attendance>();
+            this.Students = new HashSet<Student>();
         }
     
         public int Id { get; set; }
         public int Number { get; set; }
         public int Letter { get; set; }
     
-        public virtual ICollection<Student> Students { get; set; }
         public virtual ICollection<Teacher> Teachers { get; set; }
         public virtual ICollection<Schedule> Schedules { get; set; }
+        public virtual ICollection<Attendance> Attendances { get; set; }
+        public virtual ICollection<Student> Students { get; set; }
     }
 }

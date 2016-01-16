@@ -20,7 +20,7 @@ namespace Dnevnik.Data
         public int Grade_month { get; set; }
         public int Grade1 { get; set; }
     
-        public virtual Student Student { get; set; }
         public virtual Subject Subject { get; set; }
+        public virtual Student Student { get; set; }
     }
 }

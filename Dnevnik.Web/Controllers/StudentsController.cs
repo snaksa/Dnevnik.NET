@@ -12,7 +12,7 @@
         [HttpGet]
         public ActionResult Show()
         {
-            var students = DB.GetAllStudents(this.CurrentUser.Class_id);
+            var students = StudentsRepository.GetAllStudents(this.CurrentUser.Class_id);
 
             StudentsViewModel vm = new StudentsViewModel()
             {
@@ -29,7 +29,7 @@
         {
             try
             {
-                DB.SaveStudents(data.AllStudents);
+                StudentsRepository.SaveStudents(data.AllStudents);
                 TempData["success"] = "1";
             }
             catch (Exception ex)
@@ -45,7 +45,7 @@
         {
             try
             {
-                DB.AddStudent(data.StudentToAdd, this.CurrentUser.Class_id);
+                StudentsRepository.AddStudent(data.StudentToAdd, this.CurrentUser.Class_id);
                 TempData["userAdded"] = "1";
             }
             catch (Exception ex)

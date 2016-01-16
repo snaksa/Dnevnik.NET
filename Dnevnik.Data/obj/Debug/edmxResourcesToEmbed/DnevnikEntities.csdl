@@ -7,21 +7,10 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Number" Type="Int32" Nullable="false" />
     <Property Name="Letter" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Students" Relationship="Self.FK_Students_Classes" FromRole="Classes" ToRole="Students" />
     <NavigationProperty Name="Teachers" Relationship="Self.FK_Teachers_Classes" FromRole="Classes" ToRole="Teachers" />
     <NavigationProperty Name="Schedules" Relationship="DnevnikDB.FK_Schedule_Classes" FromRole="Class" ToRole="Schedule" />
-  </EntityType>
-  <EntityType Name="Student">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Number" Type="Int32" Nullable="false" />
-    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Note" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-    <Property Name="Class_id" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Class" Relationship="Self.FK_Students_Classes" FromRole="Students" ToRole="Classes" />
-    <NavigationProperty Name="Grades" Relationship="DnevnikDB.FK_Grades_Students" FromRole="Student" ToRole="Grade" />
+    <NavigationProperty Name="Attendances" Relationship="DnevnikDB.FK_Attendance_Classes" FromRole="Class" ToRole="Attendance" />
+    <NavigationProperty Name="Students" Relationship="DnevnikDB.FK_Students_Classes" FromRole="Class" ToRole="Student" />
   </EntityType>
   <EntityType Name="sysdiagram">
     <Key>
@@ -44,18 +33,6 @@
     <Property Name="Class_id" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Class" Relationship="Self.FK_Teachers_Classes" FromRole="Teachers" ToRole="Classes" />
   </EntityType>
-  <Association Name="FK_Students_Classes">
-    <End Role="Classes" Type="Self.Class" Multiplicity="1" />
-    <End Role="Students" Type="Self.Student" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Classes">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Students">
-        <PropertyRef Name="Class_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Teachers_Classes">
     <End Role="Classes" Type="Self.Class" Multiplicity="1" />
     <End Role="Teachers" Type="Self.Teacher" Multiplicity="*" />
@@ -70,13 +47,8 @@
   </Association>
   <EntityContainer Name="DnevnikEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Classes" EntityType="Self.Class" />
-    <EntitySet Name="Students" EntityType="Self.Student" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
     <EntitySet Name="Teachers" EntityType="Self.Teacher" />
-    <AssociationSet Name="FK_Students_Classes" Association="Self.FK_Students_Classes">
-      <End Role="Classes" EntitySet="Classes" />
-      <End Role="Students" EntitySet="Students" />
-    </AssociationSet>
     <AssociationSet Name="FK_Teachers_Classes" Association="Self.FK_Teachers_Classes">
       <End Role="Classes" EntitySet="Classes" />
       <End Role="Teachers" EntitySet="Teachers" />
@@ -92,12 +64,26 @@
       <End Role="Schedule" EntitySet="Schedules" />
     </AssociationSet>
     <EntitySet Name="Grades" EntityType="DnevnikDB.Grade" />
-    <AssociationSet Name="FK_Grades_Students" Association="DnevnikDB.FK_Grades_Students">
-      <End Role="Student" EntitySet="Students" />
-      <End Role="Grade" EntitySet="Grades" />
-    </AssociationSet>
     <AssociationSet Name="FK_Grades_Subjects" Association="DnevnikDB.FK_Grades_Subjects">
       <End Role="Subject" EntitySet="Subjects" />
+      <End Role="Grade" EntitySet="Grades" />
+    </AssociationSet>
+    <EntitySet Name="Attendances" EntityType="DnevnikDB.Attendance" />
+    <AssociationSet Name="FK_Attendance_Classes" Association="DnevnikDB.FK_Attendance_Classes">
+      <End Role="Class" EntitySet="Classes" />
+      <End Role="Attendance" EntitySet="Attendances" />
+    </AssociationSet>
+    <EntitySet Name="Students" EntityType="DnevnikDB.Student" />
+    <AssociationSet Name="FK_Attendance_Students" Association="DnevnikDB.FK_Attendance_Students">
+      <End Role="Student" EntitySet="Students" />
+      <End Role="Attendance" EntitySet="Attendances" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Students_Classes" Association="DnevnikDB.FK_Students_Classes">
+      <End Role="Class" EntitySet="Classes" />
+      <End Role="Student" EntitySet="Students" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Grades_Students" Association="DnevnikDB.FK_Grades_Students">
+      <End Role="Student" EntitySet="Students" />
       <End Role="Grade" EntitySet="Grades" />
     </AssociationSet>
   </EntityContainer>
@@ -156,21 +142,9 @@
     <Property Name="Subject_id" Type="Int32" Nullable="false" />
     <Property Name="Grade_month" Type="Int32" Nullable="false" />
     <Property Name="Grade1" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Student" Relationship="DnevnikDB.FK_Grades_Students" FromRole="Grade" ToRole="Student" />
     <NavigationProperty Name="Subject" Relationship="DnevnikDB.FK_Grades_Subjects" FromRole="Grade" ToRole="Subject" />
+    <NavigationProperty Name="Student" Relationship="DnevnikDB.FK_Grades_Students" FromRole="Grade" ToRole="Student" />
   </EntityType>
-  <Association Name="FK_Grades_Students">
-    <End Type="DnevnikDB.Student" Role="Student" Multiplicity="1" />
-    <End Type="DnevnikDB.Grade" Role="Grade" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Student">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Grade">
-        <PropertyRef Name="Student_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Grades_Subjects">
     <End Type="DnevnikDB.Subject" Role="Subject" Multiplicity="1" />
     <End Type="DnevnikDB.Grade" Role="Grade" Multiplicity="*" />
@@ -180,6 +154,82 @@
       </Principal>
       <Dependent Role="Grade">
         <PropertyRef Name="Subject_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Attendance">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Date1" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Period" Type="Int32" Nullable="false" />
+    <Property Name="Semester" Type="Int32" Nullable="false" />
+    <Property Name="Student_id" Type="Int32" Nullable="false" />
+    <Property Name="Att_type" Type="Int32" Nullable="false" />
+    <Property Name="Class_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Class" Relationship="DnevnikDB.FK_Attendance_Classes" FromRole="Attendance" ToRole="Class" />
+    <NavigationProperty Name="Student" Relationship="DnevnikDB.FK_Attendance_Students" FromRole="Attendance" ToRole="Student" />
+  </EntityType>
+  <Association Name="FK_Attendance_Classes">
+    <End Type="DnevnikDB.Class" Role="Class" Multiplicity="1" />
+    <End Type="DnevnikDB.Attendance" Role="Attendance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Class">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Attendance">
+        <PropertyRef Name="Class_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Number" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Note" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Class_id" Type="Int32" Nullable="false" />
+    <Property Name="EGN" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Attendances" Relationship="DnevnikDB.FK_Attendance_Students" FromRole="Student" ToRole="Attendance" />
+    <NavigationProperty Name="Class" Relationship="DnevnikDB.FK_Students_Classes" FromRole="Student" ToRole="Class" />
+    <NavigationProperty Name="Grades" Relationship="DnevnikDB.FK_Grades_Students" FromRole="Student" ToRole="Grade" />
+  </EntityType>
+  <Association Name="FK_Attendance_Students">
+    <End Type="DnevnikDB.Student" Role="Student" Multiplicity="1" />
+    <End Type="DnevnikDB.Attendance" Role="Attendance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Attendance">
+        <PropertyRef Name="Student_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Students_Classes">
+    <End Type="DnevnikDB.Class" Role="Class" Multiplicity="1" />
+    <End Type="DnevnikDB.Student" Role="Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Class">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="Class_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Grades_Students">
+    <End Type="DnevnikDB.Student" Role="Student" Multiplicity="1" />
+    <End Type="DnevnikDB.Grade" Role="Grade" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Grade">
+        <PropertyRef Name="Student_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

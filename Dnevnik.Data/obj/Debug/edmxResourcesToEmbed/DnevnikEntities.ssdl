@@ -1,5 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="DnevnikDB.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Attendance">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date1" Type="date" Nullable="false" />
+    <Property Name="Period" Type="int" Nullable="false" />
+    <Property Name="Semester" Type="int" Nullable="false" />
+    <Property Name="Student_id" Type="int" Nullable="false" />
+    <Property Name="Att_type" Type="int" Nullable="false" />
+    <Property Name="Class_id" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="Classes">
     <Key>
       <PropertyRef Name="Id" />
@@ -38,6 +50,7 @@
     <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="Note" Type="nvarchar" MaxLength="1000" />
     <Property Name="Class_id" Type="int" Nullable="false" />
+    <Property Name="EGN" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="Subjects">
     <Key>
@@ -66,6 +79,30 @@
     <Property Name="Password" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="Class_id" Type="int" Nullable="false" />
   </EntityType>
+  <Association Name="FK_Attendance_Classes">
+    <End Role="Classes" Type="Self.Classes" Multiplicity="1" />
+    <End Role="Attendance" Type="Self.Attendance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Classes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Attendance">
+        <PropertyRef Name="Class_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Attendance_Students">
+    <End Role="Students" Type="Self.Students" Multiplicity="1" />
+    <End Role="Attendance" Type="Self.Attendance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Students">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Attendance">
+        <PropertyRef Name="Student_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Grades_Students">
     <End Role="Students" Type="Self.Students" Multiplicity="1" />
     <End Role="Grades" Type="Self.Grades" Multiplicity="*" />
@@ -139,6 +176,7 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="DnevnikDBStoreContainer">
+    <EntitySet Name="Attendance" EntityType="Self.Attendance" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Classes" EntityType="Self.Classes" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Grades" EntityType="Self.Grades" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Schedule" EntityType="Self.Schedule" Schema="dbo" store:Type="Tables" />
@@ -146,6 +184,14 @@
     <EntitySet Name="Subjects" EntityType="Self.Subjects" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Teachers" EntityType="Self.Teachers" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Attendance_Classes" Association="Self.FK_Attendance_Classes">
+      <End Role="Classes" EntitySet="Classes" />
+      <End Role="Attendance" EntitySet="Attendance" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Attendance_Students" Association="Self.FK_Attendance_Students">
+      <End Role="Students" EntitySet="Students" />
+      <End Role="Attendance" EntitySet="Attendance" />
+    </AssociationSet>
     <AssociationSet Name="FK_Grades_Students" Association="Self.FK_Grades_Students">
       <End Role="Students" EntitySet="Students" />
       <End Role="Grades" EntitySet="Grades" />

@@ -30,7 +30,7 @@ namespace Dnevnik.Web.Controllers
             TempData["semester"] = semester;
 
             var subjects = DB.GetSubjects();
-            var schedule = DB.GetSchedule(semester, this.CurrentUser.Class_id);
+            var schedule = ScheduleRepository.GetSchedule(semester, this.CurrentUser.Class_id);
 
             int[,] sch = new int[6, 8];
             foreach (var period in schedule)
@@ -54,7 +54,7 @@ namespace Dnevnik.Web.Controllers
         public ActionResult SaveSchedule(ScheduleViewModel vm)
         {
             int class_id = this.CurrentUser.Class_id;
-            DB.DeleteOldSchedule(class_id, vm.Semester);
+            ScheduleRepository.DeleteOldSchedule(class_id, vm.Semester);
 
 
             List<Schedule> periods = new List<Schedule>();
@@ -79,7 +79,7 @@ namespace Dnevnik.Web.Controllers
 
             try
             {
-                DB.AddNewSchedule(periods);
+                ScheduleRepository.AddNewSchedule(periods);
                 TempData["success"] = "1";
             }
             catch (Exception ex)

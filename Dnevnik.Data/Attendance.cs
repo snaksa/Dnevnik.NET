@@ -12,23 +12,17 @@ namespace Dnevnik.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class Student
+    public partial class Attendance
     {
-        public Student()
-        {
-            this.Attendances = new HashSet<Attendance>();
-            this.Grades = new HashSet<Grade>();
-        }
-    
         public int Id { get; set; }
-        public int Number { get; set; }
-        public string Name { get; set; }
-        public string Note { get; set; }
+        public System.DateTime Date1 { get; set; }
+        public int Period { get; set; }
+        public int Semester { get; set; }
+        public int Student_id { get; set; }
+        public int Att_type { get; set; }
         public int Class_id { get; set; }
-        public string EGN { get; set; }
     
-        public virtual ICollection<Attendance> Attendances { get; set; }
         public virtual Class Class { get; set; }
-        public virtual ICollection<Grade> Grades { get; set; }
+        public virtual Student Student { get; set; }
     }
 }

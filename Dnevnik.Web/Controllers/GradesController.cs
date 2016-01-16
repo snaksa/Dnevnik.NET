@@ -32,7 +32,7 @@ namespace Dnevnik.Web.Controllers
         [HttpGet]
         public ActionResult ShowFirstSemesterGrades(int class_id, int? subject_id)
         {
-            var grades = DB.GetGrades(this.CurrentUser.Class_id, subject_id);
+            var grades = GradesRepository.GetGrades(this.CurrentUser.Class_id, subject_id);
             foreach (var grade in grades)
             {
                 grade.Grades = new string[7];
@@ -56,7 +56,7 @@ namespace Dnevnik.Web.Controllers
 
         public ActionResult ShowSecondSemesterGrades(int class_id, int? subject_id)
         {
-            var grades = DB.GetGrades(this.CurrentUser.Class_id, subject_id);
+            var grades = GradesRepository.GetGrades(this.CurrentUser.Class_id, subject_id);
             foreach (var grade in grades)
             {
                 grade.Grades = new string[7];
@@ -85,7 +85,7 @@ namespace Dnevnik.Web.Controllers
         {
             try
             {
-                DB.AddGradesToDB(vm.Students, vm.Semester, vm.Subject_id.Value);
+                GradesRepository.AddGradesToDB(vm.Students, vm.Semester, vm.Subject_id.Value);
                 TempData["success"] = "1";
             }
             catch(Exception ex)
