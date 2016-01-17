@@ -78,6 +78,7 @@
     <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="Password" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="Class_id" Type="int" Nullable="false" />
+    <Property Name="IsAdmin" Type="tinyint" Nullable="false" />
   </EntityType>
   <Association Name="FK_Attendance_Classes">
     <End Role="Classes" Type="Self.Classes" Multiplicity="1" />

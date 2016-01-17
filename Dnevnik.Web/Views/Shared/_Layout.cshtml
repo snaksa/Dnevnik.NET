@@ -18,17 +18,43 @@
 <body>
     <div id="wrapper">
         <nav class="navbar navbar-default top-navbar" role="navigation">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html">Dream</a>
+            <div class="navbar-header" style="width: 80%;float: left;">
+                <div class="pageHeaderTitle">
+                    Ел. дневник
+                </div>
             </div>
 
-            <ul class="nav navbar-top-links navbar-right"></ul>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".sidebar-collapse" style="float:right;">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <ul class="nav navbar-top-links navbar-right">
+                <li>
+                    <div class="pageHeaderDiv">
+                        <img src="~/Content/assets/img/userIcon.png" style="width: 25px;" />
+                        <span>@Session["username"].ToString()</span>
+                    </div>
+                </li>
+                <li>
+                    <a href="~/Home/Settings">
+                        <div class="pageHeaderDivLink">
+                            <img src="~/Content/assets/img/settingsIcon.png" style="width: 25px;" />
+                            <span>Настройки</span>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="~/Home/Logout">
+                        <div class="pageHeaderDivLink">
+                            <img src="~/Content/assets/img/logoutIcon.png" style="width: 25px;" />
+                            <span>Изход</span>
+                        </div>
+                    </a>
+                </li>
+            </ul>
         </nav>
         <!--/. NAV TOP  -->
         <nav class="navbar-default navbar-side" role="navigation">
@@ -36,17 +62,17 @@
                 <ul class="nav" id="main-menu">
 
                     <li>
-                        <a href="index.html"><i class="fa fa-dashboard"></i>Ученици</a>
+                        <a href="~/Students/Show"><i class="fa fa-dashboard"></i>Ученици</a>
                     </li>
 
                     <li>
                         <a href="#"><i class="fa fa-sitemap"></i>Програма<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="#">I срок</a>
+                                <a href="~/Schedule/FirstSemester">I срок</a>
                             </li>
                             <li>
-                                <a href="#">II срок</a>
+                                <a href="~/Schedule/SecondSemester">II срок</a>
                             </li>
                         </ul>
                     </li>
@@ -55,10 +81,10 @@
                         <a href="#"><i class="fa fa-sitemap"></i>Оценки<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="#">I срок</a>
+                                <a href="~/Grades/Show/1">I срок</a>
                             </li>
                             <li>
-                                <a href="#">II срок</a>
+                                <a href="~/Grades/Show/2">II срок</a>
                             </li>
                         </ul>
                     </li>

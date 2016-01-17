@@ -1,4 +1,4 @@
-﻿@model Dnevnik.Web.ViewModels.AttendanceViewModel
+﻿
 <div id="page-wrapper">
     <div id="page-inner">
         <div class="row">
@@ -28,7 +28,7 @@
                     @Html.AntiForgeryToken()
                     <div style="float: left;">
                         Отсъствия за
-                        <input type="text" name="dateToShow" id="date" class="tcal" value="@Model.Date" />
+                        <input type="text" name="dateToShow" id="date" class="tcal" value="" />
                         <input type="submit" class="attendanceButton" value="Покажи" />
                     </div>
                 }
@@ -36,8 +36,7 @@
             </div>
             @using (Html.BeginForm("UpdateAttendance", "Attendance", FormMethod.Post))
             {
-                @Html.AntiForgeryToken()
-                @Html.HiddenFor(m => @Model.Date2, new { htmlAttributes = new { value = @Model.Date2 } });
+                @Html.AntiForgeryToken();
 
 
                 <div style="float:right;margin: 10px;">
@@ -46,68 +45,30 @@
 
                 <div class="panel-body">
                     <div class="table-responsive">
-                        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                        <table class="table table-bordered" id="dataTables-example">
                             <thead>
-                                <tr>
-                                    <th width="10%" style="text-align: center;">Час</th>
-                                    <th width="40%">Предмет</th>
-                                    <th width="15%" style="text-align: center;">Извинени</th>
-                                    <th width="15%" style="text-align: center;">Закъснения</th>
-                                    <th width="15%" style="text-align: center;">Неизвинени</th>
-                                </tr>
                             </thead>
                             <tbody>
-                                @for (int i = 0; i < @Model.Periods.Count; i++)
-                                {
-                                    var neizvineni = @Model.Periods[i].Attendance.Where(a => a.AttType == 0).Select(a => a.StudentId).ToArray();
-                                    var zakusneniq = @Model.Periods[i].Attendance.Where(a => a.AttType == 1).Select(a => a.StudentId).ToArray();
-                                    var izvineni = @Model.Periods[i].Attendance.Where(a => a.AttType == 2).Select(a => a.StudentId).ToArray();
-
-
-                                    Model.Periods[i].Zakusneniq = String.Join(",", zakusneniq);
-                                    Model.Periods[i].Neizvineni = String.Join(",", neizvineni);
-                                    Model.Periods[i].Izvineni = String.Join(",", izvineni);
-
-                                    <tr class="odd gradeX">
-                                        <td class="tableCellCentered">@(i + 1). </td>
-                                        <td class="tableCellCentered" style="text-align: left;">@(Model.Periods[i].Title == null ? "-" : Model.Periods[i].Title)</td>
-                                        <td>
-                                            <!--<input class="form-control" placeholder="Извинени" >-->
-                                            @Html.EditorFor(m => m.Periods[i].Izvineni, new
-                                               {
-                                                   htmlattributes = new
-                                                   {
-                                                       placeholder = "Извинени",
-                                                       value = String.Join(",", izvineni),
-                                                       @class = "form-control"
-                                                   }
-                                               })
-                                        </td>
-                                        <td>
-                                            <!--<input class="form-control" placeholder="Закъснения">-->
-                                            @Html.EditorFor(m => m.Periods[i].Zakusneniq, new
-                                               {
-                                                   htmlattributes = new
-                                                   {
-                                                       placeholder = "Закъснения",
-                                                       @class = "form-control"
-                                                   }
-                                               })
-                                        </td>
-                                        <td>
-                                            <!--<input class="form-control" placeholder="Неизвинени">-->
-                                            @Html.EditorFor(m => m.Periods[i].Neizvineni, new
-                                               {
-                                                   htmlattributes = new
-                                                   {
-                                                       placeholder = "Неизвинени",
-                                                       value = String.Join(",", neizvineni),
-                                                       @class = "form-control"
-                                                   }
-                                               })
-                                        </td>
-                                    </tr>
-                                }
+                                <tr>
+                                    <td class="tableCellCentered" width="10%" rowspan="2">Час</td>
+                                    <td class="tableCellCentered" width="40%" rowspan="2">Предмет</td>
+                                    <td class="tableCellCentered" colspan="2" width="25%">Извинени</td>
+                                    <td class="tableCellCentered" colspan="2" width="25%">Неизвинени</td>
+                                </tr>
+                                <tr>
+                                    <td class="tableCellCentered" width="10%">Цели</td>
+                                    <td class="tableCellCentered" width="10%">Закъснения</td>
+                                    <td class="tableCellCentered" width="10%">Цели</td>
+                                    <td class="tableCellCentered" width="10%">Закъснения</td>
+                                </tr>
+                                <tr>
+                                    <td class="tableCellCentered">1. </td>
+                                    <td class="tableCellCentered" style="text-align: left;"></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>

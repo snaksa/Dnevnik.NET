@@ -22,7 +22,9 @@ namespace Dnevnik.Data
                     Name = s.Name,
                     Number = s.Number,
                     //Grades = s.Grades.Where(g => g.Subject_id == subject_id).ToList()
-                    GradesArray = s.Grades.Where(g => g.Subject_id == subject_id).Select(g => new StudentGrade
+                    GradesArray = s.Grades
+                    .Where(g => g.Subject_id == subject_id)
+                    .Select(g => new StudentGrade
                     {
                         Month = g.Grade_month,
                         Grade = g.Grade1
@@ -60,10 +62,13 @@ namespace Dnevnik.Data
 
             try
             {
+                //5 meseca za srok + 1 za srochna ocenka
+                //ako e vtori semester + 1 za godishna ocenka
                 int len = 0;
                 if (semester == 1) len = 6;
                 else len = 7;
 
+                //za vseki uchenik vzemame ocenkite po mesec, razbivame gi i gi vkarvame v bazata
                 foreach (var s in students)
                 {
                     for (int i = 0; i < len; i++)
@@ -92,7 +97,7 @@ namespace Dnevnik.Data
                     }
                 }
 
-
+                //iztrivame starite ocenki predi da vkarame novite
                 foreach (var stud in students)
                 {
                     GradesRepository.DeleteGradesBySubject(semester, stud.Id, subject_id);

@@ -83,6 +83,7 @@
           <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Password" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Class_id" Type="int" Nullable="false" />
+          <Property Name="IsAdmin" Type="tinyint" Nullable="false" />
         </EntityType>
         <Association Name="FK_Attendance_Classes">
           <End Role="Classes" Type="Self.Classes" Multiplicity="1" />
@@ -233,10 +234,10 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Number" Type="Int32" Nullable="false" />
           <Property Name="Letter" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Teachers" Relationship="Self.FK_Teachers_Classes" FromRole="Classes" ToRole="Teachers" />
           <NavigationProperty Name="Schedules" Relationship="DnevnikDB.FK_Schedule_Classes" FromRole="Class" ToRole="Schedule" />
           <NavigationProperty Name="Attendances" Relationship="DnevnikDB.FK_Attendance_Classes" FromRole="Class" ToRole="Attendance" />
           <NavigationProperty Name="Students" Relationship="DnevnikDB.FK_Students_Classes" FromRole="Class" ToRole="Student" />
+          <NavigationProperty Name="Teachers" Relationship="DnevnikDB.FK_Teachers_Classes" FromRole="Class" ToRole="Teacher" />
           </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -248,37 +249,9 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
-        <EntityType Name="Teacher">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Class_id" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Class" Relationship="Self.FK_Teachers_Classes" FromRole="Teachers" ToRole="Classes" />
-        </EntityType>
-        <Association Name="FK_Teachers_Classes">
-          <End Role="Classes" Type="Self.Class" Multiplicity="1" />
-          <End Role="Teachers" Type="Self.Teacher" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Classes">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Teachers">
-              <PropertyRef Name="Class_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="DnevnikEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Classes" EntityType="Self.Class" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
-          <EntitySet Name="Teachers" EntityType="Self.Teacher" />
-          <AssociationSet Name="FK_Teachers_Classes" Association="Self.FK_Teachers_Classes">
-            <End Role="Classes" EntitySet="Classes" />
-            <End Role="Teachers" EntitySet="Teachers" />
-          </AssociationSet>
           <EntitySet Name="Subjects" EntityType="DnevnikDB.Subject" />
           <EntitySet Name="Schedules" EntityType="DnevnikDB.Schedule" />
           <AssociationSet Name="FK_Schedule_Classes" Association="DnevnikDB.FK_Schedule_Classes">
@@ -311,6 +284,11 @@
           <AssociationSet Name="FK_Grades_Students" Association="DnevnikDB.FK_Grades_Students">
             <End Role="Student" EntitySet="Students" />
             <End Role="Grade" EntitySet="Grades" />
+          </AssociationSet>
+          <EntitySet Name="Teachers" EntityType="DnevnikDB.Teacher" />
+          <AssociationSet Name="FK_Teachers_Classes" Association="DnevnikDB.FK_Teachers_Classes">
+            <End Role="Class" EntitySet="Classes" />
+            <End Role="Teacher" EntitySet="Teachers" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="Subject">
@@ -459,6 +437,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Teacher">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Class_id" Type="Int32" Nullable="false" />
+          <Property Name="IsAdmin" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Class" Relationship="DnevnikDB.FK_Teachers_Classes" FromRole="Teacher" ToRole="Class" />
+        </EntityType>
+        <Association Name="FK_Teachers_Classes">
+          <End Type="DnevnikDB.Class" Role="Class" Multiplicity="1" />
+          <End Type="DnevnikDB.Teacher" Role="Teacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Teacher">
+              <PropertyRef Name="Class_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -482,17 +484,6 @@
                 <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
                 <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="definition" ColumnName="definition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Teachers">
-            <EntityTypeMapping TypeName="DnevnikDB.Teacher">
-              <MappingFragment StoreEntitySet="Teachers">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Class_id" ColumnName="Class_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -548,6 +539,18 @@
                 <ScalarProperty Name="Note" ColumnName="Note" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teachers">
+            <EntityTypeMapping TypeName="DnevnikDB.Teacher">
+              <MappingFragment StoreEntitySet="Teachers">
+                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+                <ScalarProperty Name="Class_id" ColumnName="Class_id" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

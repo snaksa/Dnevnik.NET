@@ -13,12 +13,20 @@ namespace Dnevnik.Web.Filters
         {
             base.OnActionExecuting(filterContext);
             var id = filterContext.HttpContext.Session["userId"];
+            var admin = filterContext.HttpContext.Session["adminUser"];
             if (id == null)
             {
                 filterContext.Result = new RedirectToRouteResult(
                      new RouteValueDictionary {
                      { "Controller", "Home" },
                      { "Action", "Login" } });
+            }
+            if (admin != null)
+            {
+                filterContext.Result = new RedirectToRouteResult(
+                     new RouteValueDictionary {
+                     { "Controller", "Teachers" },
+                     { "Action", "Show" } });
             }
         }
     }

@@ -48,6 +48,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminRepositories\ClassesRepository.cs" />
+    <Compile Include="AdminRepositories\TeachersRepository.cs" />
     <Compile Include="Attendance.cs">
       <DependentUpon>DnevnikEntities.tt</DependentUpon>
     </Compile>
@@ -73,16 +75,16 @@
     <Compile Include="Grade.cs">
       <DependentUpon>DnevnikEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="GradesRepository.cs" />
+    <Compile Include="Repositories\GradesRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Schedule.cs">
       <DependentUpon>DnevnikEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="ScheduleRepository.cs" />
+    <Compile Include="Repositories\ScheduleRepository.cs" />
     <Compile Include="Student.cs">
       <DependentUpon>DnevnikEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="StudentsRepository.cs" />
+    <Compile Include="Repositories\StudentsRepository.cs" />
     <Compile Include="Subject.cs">
       <DependentUpon>DnevnikEntities.tt</DependentUpon>
     </Compile>
@@ -94,6 +96,7 @@
     </Compile>
     <Compile Include="ViewModels\PeriodAttendance.cs" />
     <Compile Include="ViewModels\SingleAttendance.cs" />
+    <Compile Include="ViewModels\SingleClass.cs" />
     <Compile Include="ViewModels\StudentGrade.cs" />
     <Compile Include="ViewModels\StudentGradesViewModel.cs" />
     <Compile Include="ViewModels\Period.cs" />

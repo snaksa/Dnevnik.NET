@@ -15,7 +15,7 @@ namespace Dnevnik.Web.Controllers
         [HttpGet]
         public ActionResult Show(DateTime? d)
         {
-            return null;
+            return View();
         }
 
         [HttpPost]
@@ -32,7 +32,7 @@ namespace Dnevnik.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult UpdateAttendance(AttendanceViewModel vm)
+        public ActionResult UpdateAttendance()
         {
             return null;
         }

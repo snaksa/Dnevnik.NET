@@ -56,5 +56,12 @@
 
             return RedirectToAction("Show");
         }
+
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            StudentsRepository.DeleteStudent(id, this.CurrentUser.Class_id);
+            return RedirectToAction("Show");
+        }
     }
 }

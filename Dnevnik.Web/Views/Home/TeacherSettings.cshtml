@@ -1,0 +1,18 @@
+﻿@model Dnevnik.Data.Teacher
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="page-wrapper">
+    <div id="page-inner">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="page-header">Настройки</h1>
+
+            </div>
+        </div>
+
+        @Html.Partial("_SettingsPartial", @Model)
+    </div>
+</div>
+

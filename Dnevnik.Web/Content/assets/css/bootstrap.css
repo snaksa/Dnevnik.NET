@@ -1418,7 +1418,6 @@ th {
 .table > tbody > tr > td,
 .table > tfoot > tr > td {
   padding: 8px;
-  vertical-align: top;
   border-top: 1px solid #ddd;
 }
 .table > thead > tr > th {
@@ -3463,7 +3462,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav > li > a:hover,
 .nav > li > a:focus {
   text-decoration: none;
-  background-color: #eee;
 }
 .nav > li.disabled > a {
   color: #999;

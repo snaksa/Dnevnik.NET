@@ -50,5 +50,19 @@ namespace Dnevnik.Data
             db.SaveChanges();
             db.Dispose();
         }
+
+        public static void DeleteStudent(int id, int class_id)
+        {
+            var db = new DnevnikEntities();
+            var student = db.Students.Where(s => s.Id == id && s.Class_id == class_id).FirstOrDefault();
+            if (student == null) throw new ArgumentException();
+
+            db.Grades.RemoveRange(db.Grades.Where(g => g.Student_id == id));
+            db.Students.Remove(student);
+            //remove attendance records
+
+            db.SaveChanges();
+            db.Dispose();
+        }
     }
 }

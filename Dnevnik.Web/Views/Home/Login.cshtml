@@ -3,32 +3,129 @@
 }
 
 <!DOCTYPE html>
-
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Login</title>
-</head>
-<body>
-    <div>
-        @using (Html.BeginForm("Login", "Home", FormMethod.Post))
-        {
-            @Html.AntiForgeryToken()
-            <table>
-                <tr>
-                    <td>Username: </td>
-                    <td><input type="text" name="username" /></td>
-                </tr>
-                <tr>
-                    <td>Password: </td>
-                    <td><input type="password" name="password" /></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td><input type="submit" /></td>
-                </tr>
-            </table>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <meta charset="UTF-8">
+
+    <title>Elegant Login - Designscrazed</title>
+    <style>
+        body {
+            background: url('http://i.imgur.com/Eor57Ae.jpg') no-repeat fixed center center;
+            background-size: cover;
+            font-family: Montserrat;
         }
-    </div>
+
+        .logo {
+            width: 313px;
+            height: 45px;
+            margin: 30px auto;
+            color: #fff;
+            text-align: center;
+        }
+
+        .logoTitle {
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+        .login-block {
+            width: 320px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 5px;
+            border-top: 5px solid #09192A;
+            margin: 0 auto;
+        }
+
+            .login-block h1 {
+                text-align: center;
+                color: #000;
+                font-size: 18px;
+                text-transform: uppercase;
+                margin-top: 0;
+                margin-bottom: 20px;
+            }
+
+            .login-block input {
+                width: 100%;
+                height: 42px;
+                box-sizing: border-box;
+                border-radius: 5px;
+                border: 1px solid #ccc;
+                margin-bottom: 20px;
+                font-size: 14px;
+                font-family: Montserrat;
+                padding: 0 20px 0 50px;
+                outline: none;
+            }
+
+                .login-block input#username {
+                    background: #fff url('http://i.imgur.com/u0XmBmv.png') 20px top no-repeat;
+                    background-size: 16px 80px;
+                }
+
+                    .login-block input#username:focus {
+                        background: #fff url('http://i.imgur.com/u0XmBmv.png') 20px bottom no-repeat;
+                        background-size: 16px 80px;
+                    }
+
+                .login-block input#password {
+                    background: #fff url('http://i.imgur.com/Qf83FTt.png') 20px top no-repeat;
+                    background-size: 16px 80px;
+                }
+
+                    .login-block input#password:focus {
+                        background: #fff url('http://i.imgur.com/Qf83FTt.png') 20px bottom no-repeat;
+                        background-size: 16px 80px;
+                    }
+
+                .login-block input:active, .login-block input:focus {
+                    border: 1px solid #09192A;
+                }
+
+        .submitButton {
+            width: 100%;
+            height: 40px;
+            background: #09192A;
+            border-radius: 5px;
+            border: none;
+            color: #fff;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 14px;
+            font-family: Montserrat;
+            outline: none;
+            cursor: pointer;
+        }
+
+            .submitButton:hover {
+                background: #2464a8;
+            }
+    </style>
+</head>
+
+<body>
+
+    @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        string message = "E-mail";
+        if (TempData["error"] != null) { message = "Грешен e-mail или парола"; }
+        <div class="logo">
+            <span class="logoTitle">Електронен дневник</span>
+            <br />
+            СОУ "Христо Ботев"
+            <br />
+            гр. Кубрат
+        </div>
+        <div class="login-block">
+            <h1>Вход в системата</h1>
+            <input type="text" value="" placeholder="@message" name="username" />
+            <input type="password" value="" placeholder="Парола" name="password" />
+            <button type="submit" class="submitButton">Вход</button>
+        </div>
+    }
 </body>
+
 </html>

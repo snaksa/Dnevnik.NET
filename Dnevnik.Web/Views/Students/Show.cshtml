@@ -1,5 +1,12 @@
 ﻿@model Dnevnik.Web.ViewModels.StudentsViewModel
 
+<script>
+    function Confirm() {
+        var c = confirm("Всички данни за ученика ще бъдат изтрити! Сигурни ли сте, че искате да продължите?");
+        return c;
+    }
+</script>
+
 <div id="page-wrapper">
     <div id="page-inner">
         <div class="row">
@@ -21,7 +28,7 @@
                 Нещо се обърка. Промените не бяха запазени успешно.
             </div>
         }
-        
+
         @if (TempData["userAdded"] == "1")
         {
             <div class="alert alert-success">
@@ -84,12 +91,10 @@
                         <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                             <thead>
                                 <tr>
-                                    <th width="10%" style="text-align: center;">ЕГН</th>
                                     <th width="10%" style="text-align: center;">Номер</th>
+                                    <th width="20%" style="text-align: center;">ЕГН</th>
                                     <th width="30%">Име</th>
-                                    <th width="20%">Забележка</th>
-                                    <th width="10%" style="text-align: center;">Извинени</th>
-                                    <th width="10%" style="text-align: center;">Неизвинени</th>
+                                    <th width="30%">Забележка</th>
                                     <th width="10%" style="text-align: center;">Действия</th>
                                 </tr>
                             </thead>
@@ -98,11 +103,11 @@
                                 {
                                     <tr class="odd gradeX">
                                         <td>
-                                            @Html.EditorFor(m => @Model.AllStudents[i].EGN, new { htmlAttributes = new { @class = "form-control" } })
-                                        </td>
-                                        <td>
                                             @Html.EditorFor(m => @Model.AllStudents[i].Number, new { htmlAttributes = new { @class = "form-control" } })
                                             @Html.HiddenFor(m => @Model.AllStudents[i].Id)
+                                        </td>
+                                        <td>
+                                            @Html.EditorFor(m => @Model.AllStudents[i].EGN, new { htmlAttributes = new { @class = "form-control" } })
                                         </td>
                                         <td>
                                             @Html.EditorFor(m => @Model.AllStudents[i].Name, new { htmlAttributes = new { @class = "form-control" } })
@@ -110,13 +115,11 @@
                                         <td>
                                             @Html.EditorFor(m => @Model.AllStudents[i].Note, new { htmlAttributes = new { @class = "form-control" } })
                                         </td>
-                                        <td class="tableCellCentered">X</td>
-                                        <td class="tableCellCentered">X</td>
                                         <td style="text-align: center;">
-                                            <a href="@Url.Action("Details", "Students")" class="tableButton">
-                                                <img src="~/Content/assets/img/detailsButton.png" title="Детайли" />
+                                            <a href="@Url.Action("Details", "Students", new { id = @Model.AllStudents[i].Id })" class="tableButton">
+                                            <img src="~/Content/assets/img/detailsButton.png" title="Детайли" />
                                             </a>
-                                            <a href="@Url.Action("Delete", "Students")" class="tableButton">
+                                            <a href="@Url.Action("Delete", "Students", new { id = @Model.AllStudents[i].Id })" onclick="return Confirm();" class="tableButton">
                                                 <img src="~/Content/assets/img/deleteButton.png" title="Изтрий" />
                                             </a>
                                         </td>

@@ -11,6 +11,7 @@ namespace Dnevnik.Data
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class Teacher
     {
@@ -19,6 +20,7 @@ namespace Dnevnik.Data
         public string Email { get; set; }
         public string Password { get; set; }
         public int Class_id { get; set; }
+        public byte IsAdmin { get; set; }
     
         public virtual Class Class { get; set; }
     }
