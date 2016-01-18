@@ -43,6 +43,7 @@
             }
             else
             {
+                HttpContext.Session.Timeout = 30;
                 Session["userId"] = user.Id;
                 if (user.IsAdmin == 1) Session["adminUser"] = "1";
                 Session["username"] = user.Name;

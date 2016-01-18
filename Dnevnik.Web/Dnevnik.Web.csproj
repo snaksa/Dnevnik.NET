@@ -192,6 +192,7 @@
     <Content Include="Content\assets\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\assets\img\deleteButton.png" />
     <Content Include="Content\assets\img\detailsButton.png" />
+    <Content Include="Content\assets\img\loginBackground.jpg" />
     <Content Include="Content\assets\img\loginUserIcon.png" />
     <Content Include="Content\assets\img\logoutIcon.png" />
     <Content Include="Content\assets\img\settingsIcon.png" />

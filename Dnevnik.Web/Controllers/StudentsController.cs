@@ -35,6 +35,7 @@
             catch (Exception ex)
             {
                 //Log to the database
+                TempData["success"] = "0";
             }
             return RedirectToAction("Show");
         }
@@ -60,7 +61,16 @@
         [HttpGet]
         public ActionResult Delete(int id)
         {
-            StudentsRepository.DeleteStudent(id, this.CurrentUser.Class_id);
+            try
+            {
+                StudentsRepository.DeleteStudent(id, this.CurrentUser.Class_id);
+                TempData["success"] = "1";
+            }
+            catch (Exception ex)
+            {
+                //Log to the database
+                TempData["success"] = "0";
+            }
             return RedirectToAction("Show");
         }
     }

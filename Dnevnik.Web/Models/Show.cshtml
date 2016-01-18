@@ -1,0 +1,85 @@
+﻿
+<div id="page-wrapper">
+    <div id="page-inner">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="page-header">Отсъствия</h1>
+            </div>
+        </div>
+
+        @if (TempData["success"] == "1")
+        {
+            <div class="alert alert-success">
+                Промените са запазени успешно.
+            </div>
+        }
+        else if (TempData["success"] == "0")
+        {
+            <div class="alert alert-danger">
+                Нещо се обърка. Промените не бяха запазени успешно.
+            </div>
+        }
+
+        <!-- Advanced Tables -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                @using (Html.BeginForm("ShowAttendance", "Attendance", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <div style="float: left;">
+                        Отсъствия за
+                        <input type="text" name="dateToShow" id="date" class="tcal" value="" />
+                        <input type="submit" class="attendanceButton" value="Покажи" />
+                    </div>
+                }
+                <div style="clear:both;"></div>
+            </div>
+            @using (Html.BeginForm("UpdateAttendance", "Attendance", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken();
+
+
+                <div style="float:right;margin: 10px;">
+                    <input type="submit" class="saveChangesButton" value="Запази промените" />
+                </div>
+
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTables-example">
+                            <thead>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="tableCellCentered" width="10%" rowspan="2">Час</td>
+                                    <td class="tableCellCentered" width="40%" rowspan="2">Предмет</td>
+                                    <td class="tableCellCentered" colspan="2" width="25%">Извинени</td>
+                                    <td class="tableCellCentered" colspan="2" width="25%">Неизвинени</td>
+                                </tr>
+                                <tr>
+                                    <td class="tableCellCentered" width="10%">Цели</td>
+                                    <td class="tableCellCentered" width="10%">Закъснения</td>
+                                    <td class="tableCellCentered" width="10%">Цели</td>
+                                    <td class="tableCellCentered" width="10%">Закъснения</td>
+                                </tr>
+                                <tr>
+                                    <td class="tableCellCentered">1. </td>
+                                    <td class="tableCellCentered" style="text-align: left;"></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+            }
+        </div>
+        <!--End Advanced Tables -->
+        <!-- /. ROW  -->
+        <footer></footer>
+    </div>
+    <!-- /. PAGE INNER  -->
+</div>
