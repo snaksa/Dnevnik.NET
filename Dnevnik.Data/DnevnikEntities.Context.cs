@@ -30,8 +30,8 @@ namespace Dnevnik.Data
         public virtual DbSet<Subject> Subjects { get; set; }
         public virtual DbSet<Schedule> Schedules { get; set; }
         public virtual DbSet<Grade> Grades { get; set; }
-        public virtual DbSet<Attendance> Attendances { get; set; }
         public virtual DbSet<Student> Students { get; set; }
         public virtual DbSet<Teacher> Teachers { get; set; }
+        public virtual DbSet<Attendance> Attendances { get; set; }
     }
 }

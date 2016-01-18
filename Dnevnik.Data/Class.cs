@@ -17,7 +17,6 @@ namespace Dnevnik.Data
         public Class()
         {
             this.Schedules = new HashSet<Schedule>();
-            this.Attendances = new HashSet<Attendance>();
             this.Students = new HashSet<Student>();
             this.Teachers = new HashSet<Teacher>();
         }
@@ -27,7 +26,6 @@ namespace Dnevnik.Data
         public int Letter { get; set; }
     
         public virtual ICollection<Schedule> Schedules { get; set; }
-        public virtual ICollection<Attendance> Attendances { get; set; }
         public virtual ICollection<Student> Students { get; set; }
         public virtual ICollection<Teacher> Teachers { get; set; }
     }

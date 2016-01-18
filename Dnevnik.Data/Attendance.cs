@@ -17,12 +17,9 @@ namespace Dnevnik.Data
         public int Id { get; set; }
         public System.DateTime Date1 { get; set; }
         public int Period { get; set; }
-        public int Semester { get; set; }
         public int Student_id { get; set; }
         public int Att_type { get; set; }
-        public int Class_id { get; set; }
     
-        public virtual Class Class { get; set; }
         public virtual Student Student { get; set; }
     }
 }

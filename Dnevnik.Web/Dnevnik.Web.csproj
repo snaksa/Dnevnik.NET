@@ -271,7 +271,7 @@
     <Content Include="Views\Grades\Show.cshtml" />
     <Content Include="Views\Grades\FirstSemesterGrades.cshtml" />
     <Content Include="Views\Grades\SecondSemesterGrades.cshtml" />
-    <Content Include="Views\Attendance\Show.cshtml" />
+    <Content Include="Models\Show.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Teachers\Show.cshtml" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
@@ -279,6 +279,7 @@
     <Content Include="Views\Home\_SettingsPartial.cshtml" />
     <Content Include="Views\Home\TeacherSettings.cshtml" />
     <Content Include="Views\Home\AdminSettings.cshtml" />
+    <Content Include="Views\Attendance\Show.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

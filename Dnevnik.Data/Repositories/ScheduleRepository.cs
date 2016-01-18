@@ -11,19 +11,14 @@ namespace Dnevnik.Data
 {
     public static class ScheduleRepository
     {
-        public static List<ScheduleDay> GetSchedule(int semester, int class_id)
+        public static List<Schedule> GetSchedule(int semester, int class_id)
         {
             var db = new DnevnikEntities();
             var schedule = db.Schedules
+                .Include("Subject")
                 .Where(s => s.Class_id == class_id && s.Semester == semester)
                 .OrderBy(s => s.Day)
                 .ThenBy(s => s.Period)
-                .Select(s => new ScheduleDay
-                {
-                    Day = s.Day,
-                    Period = s.Period,
-                    Subject = s.Subject
-                })
                 .ToList();
             db.Dispose();
             return schedule;

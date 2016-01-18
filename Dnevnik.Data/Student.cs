@@ -16,8 +16,8 @@ namespace Dnevnik.Data
     {
         public Student()
         {
-            this.Attendances = new HashSet<Attendance>();
             this.Grades = new HashSet<Grade>();
+            this.Attendances = new HashSet<Attendance>();
         }
     
         public int Id { get; set; }
@@ -27,8 +27,8 @@ namespace Dnevnik.Data
         public int Class_id { get; set; }
         public string EGN { get; set; }
     
-        public virtual ICollection<Attendance> Attendances { get; set; }
         public virtual Class Class { get; set; }
         public virtual ICollection<Grade> Grades { get; set; }
+        public virtual ICollection<Attendance> Attendances { get; set; }
     }
 }

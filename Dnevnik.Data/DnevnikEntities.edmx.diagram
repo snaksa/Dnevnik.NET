@@ -13,14 +13,13 @@
         <AssociationConnector Association="DnevnikDB.FK_Schedule_Subjects" />
         <EntityTypeShape EntityType="DnevnikDB.Grade" Width="1.5" PointX="9.625" PointY="1" />
         <AssociationConnector Association="DnevnikDB.FK_Grades_Subjects" />
-        <EntityTypeShape EntityType="DnevnikDB.Attendance" Width="1.5" PointX="2.125" PointY="3.875" />
-        <AssociationConnector Association="DnevnikDB.FK_Attendance_Classes" />
         <EntityTypeShape EntityType="DnevnikDB.Student" Width="1.5" PointX="1.75" PointY="0.5" />
-        <AssociationConnector Association="DnevnikDB.FK_Attendance_Students" />
         <AssociationConnector Association="DnevnikDB.FK_Students_Classes" />
         <AssociationConnector Association="DnevnikDB.FK_Grades_Students" />
         <EntityTypeShape EntityType="DnevnikDB.Teacher" Width="1.5" PointX="5.125" PointY="4.25" />
         <AssociationConnector Association="DnevnikDB.FK_Teachers_Classes" />
+        <EntityTypeShape EntityType="DnevnikDB.Attendance" Width="1.5" PointX="2.25" PointY="4.125" />
+        <AssociationConnector Association="DnevnikDB.FK_Attendance_Students" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

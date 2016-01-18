@@ -6,6 +6,7 @@
 <html>
 <head>
     <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <meta charset="UTF-8">
 
     <title>Elegant Login - Designscrazed</title>
@@ -18,11 +19,16 @@
 
         .logo {
             width: 313px;
-            height: 45px;
-            margin: 30px auto;
+            margin: 20px auto;
+            margin-top: 40px;
+            margin-bottom: 0px;
+            width: 320px;
+            padding: 20px;
             color: #fff;
             text-align: center;
             text-shadow: 0 0 3px #000, 0 0 5px #000;
+            background: rgba(9, 25, 43, 0.9);
+            border-radius: 5px 5px 0px 0px;
         }
 
         .logoTitle {
@@ -31,12 +37,14 @@
         }
 
         .login-block {
-            width: 320px;
+            width: 360px;
             padding: 20px;
             background: #fff;
-            border-radius: 5px;
-            border-top: 5px solid #09192A;
+            border-radius: 0px 0px 5px 5px;
+            border: 1px solid #09192A;
+            box-sizing: border-box;
             margin: 0 auto;
+            position: relative;
         }
 
             .login-block h1 {
@@ -62,7 +70,7 @@
             }
 
                 .login-block input#username {
-                    background: #fff url('http://i.imgur.com/u0XmBmv.png') 20px top no-repeat;
+                    background: #fff url('../../Content/assets/img/loginUserIcon.png') 20px top no-repeat;
                     background-size: 16px 80px;
                 }
 
@@ -103,30 +111,84 @@
             .submitButton:hover {
                 background: #2464a8;
             }
+
+        .forgottenPassword {
+            width: 200px;
+            cursor: pointer;
+            margin: 10px auto;
+            margin-bottom: 0px;
+            text-align: center;
+            color: #09192A;
+        }
+
+            .forgottenPassword:hover {
+                text-decoration: underline;
+                color: #2464a8;
+            }
+
+        .forgottenPasswordDiv {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            border-radius: 0px 0px 5px 5px;
+            display: none;
+            background-color: #fff;
+            padding: 20px;
+            padding-top: 55px;
+        }
     </style>
+
+    <script>
+        function ShowForgottenPassword() {
+            $("#frgPass").slideToggle("slow");
+        }
+    </script>
 </head>
 
 <body>
 
-    @using (Html.BeginForm("Login", "Home", FormMethod.Post))
-    {
-        @Html.AntiForgeryToken()
+
+    @{
         string message = "E-mail";
-        if (TempData["error"] != null) { message = "Грешен e-mail или парола"; }
-        <div class="logo">
-            <span class="logoTitle">Електронен дневник</span>
-            <br />
-            СОУ "Христо Ботев"
-            <br />
-            гр. Кубрат
-        </div>
-        <div class="login-block">
+        if (TempData["error"] != null)
+        {
+            message = "Грешен e-mail или парола";
+        }
+    }
+    <div class="logo">
+        <span class="logoTitle">Електронен дневник</span>
+        <br />
+        СОУ "Христо Ботев"
+        <br />
+        гр. Кубрат
+    </div>
+    <div class="login-block">
+        @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
             <h1>Вход в системата</h1>
             <input type="text" value="" placeholder="@message" name="username" />
             <input type="password" value="" placeholder="Парола" name="password" />
             <button type="submit" class="submitButton">Вход</button>
+        }
+        <div class="forgottenPassword" onclick="ShowForgottenPassword()">Забравена парола</div>
+        <div class="forgottenPasswordDiv" id="frgPass">
+            @using (Html.BeginForm("SendPassword", "Home", FormMethod.Post))
+            { @Html.AntiForgeryToken()  <h1>Възстановяване на парола</h1>
+                <input type="text" value="" placeholder="Моля въведете своя e-mail" name="username" />
+                <button type="submit" class="submitButton">Изпрати</button>
+
+
+                <div class="forgottenPassword" onclick="ShowForgottenPassword()">Назад</div>
+            }
         </div>
-    }
+
+    </div>
+
+
 </body>
 
 </html>

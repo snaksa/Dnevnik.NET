@@ -7,10 +7,8 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Date1" Type="date" Nullable="false" />
     <Property Name="Period" Type="int" Nullable="false" />
-    <Property Name="Semester" Type="int" Nullable="false" />
     <Property Name="Student_id" Type="int" Nullable="false" />
     <Property Name="Att_type" Type="int" Nullable="false" />
-    <Property Name="Class_id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Classes">
     <Key>
@@ -80,18 +78,6 @@
     <Property Name="Class_id" Type="int" Nullable="false" />
     <Property Name="IsAdmin" Type="tinyint" Nullable="false" />
   </EntityType>
-  <Association Name="FK_Attendance_Classes">
-    <End Role="Classes" Type="Self.Classes" Multiplicity="1" />
-    <End Role="Attendance" Type="Self.Attendance" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Classes">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Attendance">
-        <PropertyRef Name="Class_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Attendance_Students">
     <End Role="Students" Type="Self.Students" Multiplicity="1" />
     <End Role="Attendance" Type="Self.Attendance" Multiplicity="*" />
@@ -185,10 +171,6 @@
     <EntitySet Name="Subjects" EntityType="Self.Subjects" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Teachers" EntityType="Self.Teachers" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK_Attendance_Classes" Association="Self.FK_Attendance_Classes">
-      <End Role="Classes" EntitySet="Classes" />
-      <End Role="Attendance" EntitySet="Attendance" />
-    </AssociationSet>
     <AssociationSet Name="FK_Attendance_Students" Association="Self.FK_Attendance_Students">
       <End Role="Students" EntitySet="Students" />
       <End Role="Attendance" EntitySet="Attendance" />

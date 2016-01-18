@@ -12,6 +12,9 @@ namespace Dnevnik.Web.Filters
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             base.OnActionExecuting(filterContext);
+
+            filterContext.HttpContext.Session.Timeout = 30;
+
             var id = filterContext.HttpContext.Session["adminUser"];
             if (id == null)
             {
