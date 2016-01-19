@@ -25,6 +25,14 @@
             return teacher;
         }
 
+        public static Teacher GetUserByEmail(string email)
+        {
+            var db = new DnevnikEntities();
+            var t = db.Teachers.Where(a => a.Email == email).FirstOrDefault();
+            db.Dispose();
+            return t;
+        }
+
         public static List<Subject> GetSubjects()
         {
             var db = new DnevnikEntities();

@@ -32,7 +32,7 @@
                     <li>
                         <div class="pageHeaderDiv">
                             <img src="~/Content/assets/img/userIcon.png" style="width: 25px;" />
-                            <span>@*Session["username"].ToString()*@username</span>
+                            <span>@Session["username"].ToString()</span>
                         </div>
                     </li>
                     <li>
@@ -76,19 +76,11 @@
                     </li>
 
                     <li>
-                        <a href="#"><i class="fa fa-sitemap"></i>Оценки<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="~/Grades/Show/1">I срок</a>
-                            </li>
-                            <li>
-                                <a href="~/Grades/Show/2">II срок</a>
-                            </li>
-                        </ul>
+                        <a href="~/Grades/Show"><i class="fa fa-dashboard"></i>Оценки</a>
                     </li>
 
                     <li>
-                        <a href="index.html"><i class="fa fa-dashboard"></i>Отсъствия</a>
+                        <a href="~/Attendance/Show"><i class="fa fa-dashboard"></i>Отсъствия</a>
                     </li>
 
                     <li>
