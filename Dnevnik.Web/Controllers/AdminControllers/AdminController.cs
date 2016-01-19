@@ -15,7 +15,7 @@ namespace Dnevnik.Web.Controllers.AdminControllers
         {
             get
             {
-                return DB.GetCurrentUser(Int32.Parse(Session["userId"].ToString()));//pass the user id
+                return DB.GetCurrentUser(Int32.Parse(Request.Cookies["userId"].Value.ToString()));//pass the user id
             }
         }
     }

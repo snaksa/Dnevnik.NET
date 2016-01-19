@@ -9,6 +9,7 @@
     using System;
     using System.Net.Mail;
     using System.Text;
+    using System.Web;
 
     public class HomeController : Controller
     {
@@ -20,9 +21,10 @@
         [HttpGet]
         public ActionResult Login()
         {
-            if (Session["userId"] != null)
+
+            if (Request.Cookies["userId"] != null)
             {
-                if (Session["adminUser"] != null) return RedirectToAction("Show", "Teachers");
+                if (Request.Cookies["adminUser"] != null) return RedirectToAction("Show", "Teachers");
                 else return RedirectToAction("Show", "Students");
             }
             return View();
@@ -45,9 +47,24 @@
             }
             else
             {
-                Session["userId"] = user.Id;
-                if (user.IsAdmin == 1) Session["adminUser"] = "1";
-                Session["username"] = user.Name;
+                HttpCookie userId = new HttpCookie("userId", user.Id.ToString());
+                userId.Expires = DateTime.Now.AddHours(5);
+                Response.Cookies.Add(userId);
+                //Session["userId"] = user.Id;
+
+                if (user.IsAdmin == 1)
+                {
+                    HttpCookie adminUser = new HttpCookie("adminUser", "1");
+                    adminUser.Expires = DateTime.Now.AddHours(5);
+                    Response.Cookies.Add(adminUser);
+                    //Session["adminUser"] = "1";
+                }
+
+                HttpCookie name = new HttpCookie("username", user.Name);
+                name.Expires = DateTime.Now.AddHours(5);
+                Response.Cookies.Add(name);
+                //Session["username"] = user.Name;
+
                 return RedirectToAction("Show", "Students");
             }
         }
@@ -55,18 +72,30 @@
         [HttpGet]
         public ActionResult Logout()
         {
-            Session["userId"] = null;
-            Session["adminUser"] = null;
-            Session["username"] = null;
+            //Session["userId"] = null;
+            //Session["adminUser"] = null;
+            //Session["username"] = null;
+
+            string[] myCookies = Request.Cookies.AllKeys;
+            foreach (string cookie in myCookies)
+            {
+                Response.Cookies[cookie].Expires = DateTime.Now.AddDays(-1);
+            }
+
             return RedirectToAction("Login");
         }
 
         [HttpGet]
         public ActionResult Settings()
         {
-            if (Session["userId"] == null) return RedirectToAction("Login");
-            if(Session["adminUser"] != null) return RedirectToAction("Login");
-            int id = Int32.Parse(Session["userId"].ToString());
+            //if (Session["userId"] == null) return RedirectToAction("Login");
+            //if(Session["adminUser"] != null) return RedirectToAction("Login");
+            //int id = Int32.Parse(Session["userId"].ToString());
+
+            if (Request.Cookies["userId"] == null) return RedirectToAction("Login");
+            if (Request.Cookies["adminUser"] != null) return RedirectToAction("Show", "Teachers");
+            int id = Int32.Parse(Request.Cookies["userId"].Value.ToString());
+
             var teacher = DB.GetCurrentUser(id);
             return View("TeacherSettings", teacher);
         }
@@ -74,9 +103,14 @@
         [HttpGet]
         public ActionResult AdminSettings()
         {
-            if (Session["userId"] == null) return RedirectToAction("Login");
-            if (Session["adminUser"] == null) return RedirectToAction("Login");
-            int id = Int32.Parse(Session["userId"].ToString());
+            //if (Session["userId"] == null) return RedirectToAction("Login");
+            //if (Session["adminUser"] == null) return RedirectToAction("Login");
+            //int id = Int32.Parse(Session["userId"].ToString());
+
+            if (Request.Cookies["userId"] == null) return RedirectToAction("Login");
+            if (Request.Cookies["adminUser"] == null) return RedirectToAction("Login");
+            int id = Int32.Parse(Request.Cookies["userId"].Value.ToString());
+
             var teacher = DB.GetCurrentUser(id);
             return View(teacher);
         }
@@ -88,7 +122,7 @@
             try
             {
                 DB.UpdateTeacherSettings(t);
-                Session["username"] = t.Name;
+                Response.Cookies.Add(new HttpCookie("username", t.Name));
                 TempData["success"] = "1";
             }
             catch (Exception ex)

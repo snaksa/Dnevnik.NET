@@ -26,7 +26,7 @@ namespace Dnevnik.Web.Controllers
 
             if(date.Month >= 2 && date.Month <= 6) 
                 schedule = ScheduleRepository.GetSchedule(2, this.CurrentUser.Class_id).Where(s => s.Day == day).ToList();
-            else if ((date.Month >= 9 && date.Month <= 12 || date.Month == 1)) schedule = ScheduleRepository.GetSchedule(1, this.CurrentUser.Class_id).Where(s => s.Day == day).ToList();
+            else if ((date.Month >= 9 && date.Month <= 12) || date.Month == 1) schedule = ScheduleRepository.GetSchedule(1, this.CurrentUser.Class_id).Where(s => s.Day == day).ToList();
 
             AttendanceViewModel vm = new AttendanceViewModel()
             {

@@ -13,10 +13,9 @@ namespace Dnevnik.Web.Filters
         {
             base.OnActionExecuting(filterContext);
 
-            filterContext.HttpContext.Session.Timeout = 30;
 
-            var id = filterContext.HttpContext.Session["userId"];
-            var admin = filterContext.HttpContext.Session["adminUser"];
+            var id = filterContext.HttpContext.Request.Cookies["userId"];
+            var admin = filterContext.HttpContext.Request.Cookies["adminUser"];
             if (id == null)
             {
                 filterContext.Result = new RedirectToRouteResult(
