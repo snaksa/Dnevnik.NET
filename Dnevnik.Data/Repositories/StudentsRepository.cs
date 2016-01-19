@@ -9,6 +9,19 @@ namespace Dnevnik.Data
 {
     public static class StudentsRepository
     {
+        public static Student GetStudent(string egn)
+        {
+            var dbContext = new DnevnikEntities();
+            var student = dbContext
+                .Students
+                .Include("Grades")
+                .Include("Attendances")
+                .Where(s => s.EGN == egn)
+                .FirstOrDefault();
+            dbContext.Dispose();
+            return student;
+        }
+
         public static List<Student> GetAllStudents(int class_id)
         {
             var db = new DnevnikEntities();

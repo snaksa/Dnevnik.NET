@@ -15,7 +15,20 @@
     {
         public ActionResult Index()
         {
-            return Content("This is the index!");
+            return View();
+        }
+
+        public PartialViewResult StudentDetails(string id)
+        {
+            var student = StudentsRepository.GetStudent(id);
+            var subjects = ScheduleRepository.GetAllSchedule(student.Class_id);
+
+            IndexViewModel vm = new IndexViewModel()
+            {
+                CurrentStudent = student,
+                Subjects = subjects
+            };
+            return PartialView("_StudentDetails", vm);
         }
 
         [HttpGet]

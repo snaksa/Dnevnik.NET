@@ -1,4 +1,5 @@
-﻿using Dnevnik.Web.Models;
+﻿using Dnevnik.Data.ViewModels;
+using Dnevnik.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -24,6 +25,25 @@ namespace Dnevnik.Data
             return schedule;
         }
 
+        public static List<SubjectVM> GetAllSchedule(int class_id)
+        {
+            var db = new DnevnikEntities();
+            var schedule = db.Schedules
+                .Include("Subject")
+                .Where(s => s.Class_id == class_id)
+                .GroupBy(x => x.Subject_id)
+                .Select(y => new SubjectVM { 
+                    Id = y.Key,
+                    Title = y.FirstOrDefault().Subject.Title
+                })
+                .ToList();
+
+
+            db.Dispose();
+
+            return schedule;
+        }
+
         public static void DeleteOldSchedule(int class_id, int semester)
         {
             using (var db = new DnevnikEntities())
@@ -43,8 +63,5 @@ namespace Dnevnik.Data
             db.SaveChanges();
             db.Dispose();
         }
-
-        
-
     }
 }

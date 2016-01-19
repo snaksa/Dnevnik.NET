@@ -180,6 +180,7 @@
     <Compile Include="ViewModels\AttendanceViewModel.cs" />
     <Compile Include="ViewModels\ClassesViewModel.cs" />
     <Compile Include="ViewModels\GradesViewModel.cs" />
+    <Compile Include="ViewModels\IndexViewModel.cs" />
     <Compile Include="ViewModels\ScheduleViewModel.cs" />
     <Compile Include="ViewModels\StudentsViewModel.cs" />
     <Compile Include="ViewModels\TeachersViewModel.cs" />
@@ -220,6 +221,7 @@
     <Content Include="Content\calendar_resources\index.html" />
     <Content Include="Content\calendar_resources\tcal.css" />
     <Content Include="Content\calendar_resources\tcal.js" />
+    <Content Include="Content\home_page\styles.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -280,6 +282,7 @@
     <Content Include="Views\Home\TeacherSettings.cshtml" />
     <Content Include="Views\Home\AdminSettings.cshtml" />
     <Content Include="Views\Attendance\Show.cshtml" />
+    <Content Include="Views\Home\_StudentDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
