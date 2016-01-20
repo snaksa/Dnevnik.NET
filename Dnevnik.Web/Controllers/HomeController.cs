@@ -22,11 +22,15 @@
         {
             var student = StudentsRepository.GetStudent(id);
             var subjects = ScheduleRepository.GetAllSchedule(student.Class_id);
+            var schedule1 = ScheduleRepository.GetSchedule(1, student.Class_id);
+            var schedule2 = ScheduleRepository.GetSchedule(2, student.Class_id);
 
             IndexViewModel vm = new IndexViewModel()
             {
                 CurrentStudent = student,
-                Subjects = subjects
+                Subjects = subjects,
+                Schedule1 = schedule1,
+                Schedule2 = schedule2
             };
             return PartialView("_StudentDetails", vm);
         }

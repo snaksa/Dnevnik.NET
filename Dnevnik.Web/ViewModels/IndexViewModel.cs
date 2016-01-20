@@ -10,5 +10,7 @@ namespace Dnevnik.Web.ViewModels
     {
         public Student CurrentStudent { get; set; }
         public List<SubjectVM> Subjects { get; set; }
+        public List<Schedule> Schedule1 { get; set; }
+        public List<Schedule> Schedule2 { get; set; }
     }
 }
