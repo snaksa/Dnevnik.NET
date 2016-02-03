@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Free Bootstrap Admin Template : Dream</title>
+    <!-- Bootstrap Styles-->
+    @Styles.Render("~/Content/assets/css/bootstrap.css")
+    <!-- FontAwesome Styles-->
+    @Styles.Render("~/Content/assets/css/font-awesome.css")
+    <!-- Custom Styles-->
+    @Styles.Render("~/Content/assets/css/custom-styles.css")
+    <!-- Google Fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <!--Calendar Styles-->
+    @Styles.Render("~/Content/calendar_resources/tcal.css")
+</head>
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-default top-navbar" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+
+            <div style="float:right;">
+                <ul class="nav navbar-top-links navbar-right">
+                    <li>
+                        <div class="pageHeaderDiv">
+                            <img src="~/Content/assets/img/userIcon.png" style="width: 25px;" />
+                            <span>@*@Session["username"].ToString()*@ @Request.Cookies["username"].Value</span>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="~/Home/Settings">
+                            <div class="pageHeaderDivLink">
+                                <img src="~/Content/assets/img/settingsIcon.png" style="width: 25px;" />
+                                <span>Настройки</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="~/Home/Logout">
+                            <div class="pageHeaderDivLink">
+                                <img src="~/Content/assets/img/logoutIcon.png" style="width: 25px;" />
+                                <span>Изход</span>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!--/. NAV TOP  -->
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+
+                    <li>
+                        <a href="~/Students/Show"><i class="fa fa-dashboard"></i>Ученици</a>
+                    </li>
+
+                    <li>
+                        <a href="#"><i class="fa fa-sitemap"></i>Програма<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="~/Schedule/FirstSemester">I срок</a>
+                            </li>
+                            <li>
+                                <a href="~/Schedule/SecondSemester">II срок</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="~/Grades/Show"><i class="fa fa-dashboard"></i>Оценки</a>
+                    </li>
+
+                    <li>
+                        <a href="~/Attendance/Show"><i class="fa fa-dashboard"></i>Отсъствия</a>
+                    </li>
+
+                    <li>
+                        <a href="index.html"><i class="fa fa-dashboard"></i>Справки</a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </nav>
+        <!-- /. NAV SIDE  -->
+        @RenderBody()
+        <!-- /. PAGE WRAPPER  -->
+    </div>
+    <!-- /. WRAPPER  -->
+    <!-- JS Scripts-->
+    <!-- jQuery Js -->
+    @Scripts.Render("~/Content/assets/js/jquery-1.10.2.js")
+    <!-- Bootstrap Js -->
+    @Scripts.Render("~/Content/assets/js/bootstrap.min.js")
+    <!-- Metis Menu Js -->
+    @Scripts.Render("~/Content/assets/js/jquery.metisMenu.js")
+    <!-- Custom Js -->
+    @Scripts.Render("~/Content/assets/js/custom-scripts.js")
+    @Scripts.Render("~/Content/assets/js/myScripts.js")
+    <!-- Calendar Scripts -->
+    @Scripts.Render("~/Content/calendar_resources/tcal.js")
+
+
+</body>
+</html>

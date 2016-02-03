@@ -7,6 +7,12 @@
 <head>
     <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script>
+        window.onload = function () {
+            //remove ads on somee
+            $('#layout').nextAll().remove();
+        }
+	</script>
     <meta charset="UTF-8">
 
     <title>Електронен дневник - Вход в системата</title>
@@ -150,7 +156,7 @@
 
 <body>
 
-    <div class="layout">
+    <div class="layout" id="layout">
         @{
             string title = "Вход в системата";
             string message = "E-mail";

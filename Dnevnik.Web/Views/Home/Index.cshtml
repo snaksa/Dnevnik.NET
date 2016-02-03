@@ -8,6 +8,18 @@
     <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     @Styles.Render("~/Content/home_page/styles.css")
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>
+        window.onload = function () {
+            //remove ads on somee
+            $('#layout').nextAll().remove();
+        }
+
+        window.setInterval(function () {
+            //remove ads on somee
+            $('#layout').nextAll().remove();
+        }, 1);
+    </script>
+
     <meta charset="UTF-8">
 
     <title>Електронен дневник - СОУ "Христо Ботев", гр. Кубрат</title>
@@ -21,6 +33,9 @@
             var egn = $("#egn").val();
             $("#results").load("/Home/StudentDetails/" + egn, function () {
                 $("#results").slideDown("slow");
+
+                //remove ads on somee
+                $('#neizvineniDiv').nextAll().remove();
             });
         }
 
@@ -57,7 +72,7 @@
         }
     }
 
-    <div class="layout">
+    <div class="layout" id="layout">
         <div class="logo">
             <span class="logoTitle">Електронен дневник</span>
             <br />

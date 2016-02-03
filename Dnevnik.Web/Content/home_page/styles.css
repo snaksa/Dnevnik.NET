@@ -128,11 +128,12 @@ a:hover{
 .details {
     margin: 20px auto;
     width: 900px;
-    height: 600px;
     border: 2px solid #fff;
     border-radius: 5px 5px 0px 0px;
     background: rgba(9, 25, 43, 0.9);
     text-shadow: 0 0 3px #000, 0 0 5px #000;
+    padding-bottom: 50px;
+    margin-bottom: 100px;
 }
 
 .detailsName {
