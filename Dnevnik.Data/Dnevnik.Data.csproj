@@ -78,6 +78,7 @@
     <Compile Include="Repositories\AttendanceRepository.cs" />
     <Compile Include="Repositories\GradesRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\SubjectsRepository.cs" />
     <Compile Include="Schedule.cs">
       <DependentUpon>DnevnikEntities.tt</DependentUpon>
     </Compile>

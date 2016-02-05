@@ -160,6 +160,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AdminControllers\AdminController.cs" />
     <Compile Include="Controllers\AdminControllers\ClassesController.cs" />
+    <Compile Include="Controllers\AdminControllers\SubjectsController.cs" />
     <Compile Include="Controllers\AdminControllers\TeachersController.cs" />
     <Compile Include="Controllers\AttendanceController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -183,6 +184,7 @@
     <Compile Include="ViewModels\IndexViewModel.cs" />
     <Compile Include="ViewModels\ScheduleViewModel.cs" />
     <Compile Include="ViewModels\StudentsViewModel.cs" />
+    <Compile Include="ViewModels\SubjectsViewModel.cs" />
     <Compile Include="ViewModels\TeachersViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -284,6 +286,7 @@
     <Content Include="Views\Home\AdminSettings.cshtml" />
     <Content Include="Views\Attendance\Show.cshtml" />
     <Content Include="Views\Home\_StudentDetails.cshtml" />
+    <Content Include="Views\Subjects\Show.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
