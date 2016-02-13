@@ -1,5 +1,7 @@
 ﻿@model List<Dnevnik.Data.ViewModels.SubjectVM>
-
+@{
+    TempData["title"] = "Оценки";
+}
 <div id="page-wrapper">
     <div id="page-inner">
         @using (Html.BeginForm("SaveSchedule", "Schedule", FormMethod.Post))

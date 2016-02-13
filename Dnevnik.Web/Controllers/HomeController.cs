@@ -69,6 +69,19 @@
                 Response.Cookies.Add(userId);
                 //Session["userId"] = user.Id;
 
+                int classNumber = user.Class.Number;
+                int letter = user.Class.Letter;
+                string letterStr = "";
+                if (letter == 1) letterStr = "а";
+                else if (letter == 2) letterStr = "б";
+                else if (letter == 3) letterStr = "в";
+                else if (letter == 4) letterStr = "г";
+                else if (letter == 5) letterStr = "д";
+
+                HttpCookie userClass = new HttpCookie("userClass", classNumber.ToString() + letterStr);
+                userClass.Expires = DateTime.Now.AddHours(5);
+                Response.Cookies.Add(userClass);
+
                 if (user.IsAdmin == 1)
                 {
                     HttpCookie adminUser = new HttpCookie("adminUser", "1");

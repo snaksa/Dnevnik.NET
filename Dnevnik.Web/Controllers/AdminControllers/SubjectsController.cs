@@ -32,7 +32,7 @@ namespace Dnevnik.Web.Controllers.AdminControllers
             {
                 if (title != null && title != string.Empty)
                 {
-                    SubjectsRepository.AddSubject(title);
+                    SubjectsRepository.AddSubject(title, vm.IsZip);
                     TempData["subjectAdded"] = "1";
                 }
             }

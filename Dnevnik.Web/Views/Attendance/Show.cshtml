@@ -1,4 +1,7 @@
 ﻿@model Dnevnik.Web.ViewModels.AttendanceViewModel
+@{
+    TempData["title"] = "Отсъствия";
+}
 <div id="page-wrapper">
     <div id="page-inner">
         <div class="row">
@@ -65,13 +68,27 @@
                                     Model.Periods[i].Izvineni = @String.Join(",", Model.AllAttendances.Where(a => a.Period == i + 1 && a.Att_type == 2).OrderBy(a => a.Student.Number).Select(a => a.Student.Number).ToArray());
                                     <tr>
                                         <td class="tableCellCentered">
-                                            @(i + 1). 
+                                            @(i + 1).
                                             @Html.HiddenFor(m => Model.Periods[i].PeriodId)
                                         </td>
-                                        <td class="tableCellCentered" style="text-align: left;">@Model.AllSchedule.Where(s => s.Period == i + 1).Select(s => s.Subject.Title).FirstOrDefault()</td>
-                                        <td>@Html.EditorFor(m => Model.Periods[i].Neizvineni, new { htmlAttributes = new { @class = "form-control" } })</td>
-                                        <td>@Html.EditorFor(m => Model.Periods[i].Zakusneniq, new { htmlAttributes = new { @class = "form-control" } })</td>
-                                        <td>@Html.EditorFor(m => Model.Periods[i].Izvineni, new { htmlAttributes = new { @class = "form-control" } })</td>
+                                        @if (@Model.AllSchedule.Where(s => s.Period == i + 1).Select(s => s.Subject.Title).FirstOrDefault() != null)
+                                        {
+                                            @:
+                                            <td class="tableCellCentered" style="text-align: left;">@Model.AllSchedule.Where(s => s.Period == i + 1).Select(s => s.Subject.Title).FirstOrDefault()</td>
+                                            @:
+                                            <td>@Html.EditorFor(m => Model.Periods[i].Neizvineni, new { htmlAttributes = new { @class = "form-control" } })</td>
+                                            @:
+                                            <td>@Html.EditorFor(m => Model.Periods[i].Zakusneniq, new { htmlAttributes = new { @class = "form-control" } })</td>
+                                            @:
+                                            <td>@Html.EditorFor(m => Model.Periods[i].Izvineni, new { htmlAttributes = new { @class = "form-control" } })</td>
+                                        }
+                                        else
+                                        {
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        }
                                     </tr>
                                 }
                             </tbody>

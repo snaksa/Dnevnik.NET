@@ -1,5 +1,7 @@
 ﻿@model Dnevnik.Web.ViewModels.StudentsViewModel
-
+@{
+    TempData["title"] = "Ученици";
+}
 <script>
     function Confirm() {
         var c = confirm("Всички данни за ученика ще бъдат изтрити! Сигурни ли сте, че искате да продължите?");

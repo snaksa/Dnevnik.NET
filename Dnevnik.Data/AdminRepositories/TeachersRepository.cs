@@ -21,7 +21,7 @@ namespace Dnevnik.Data.AdminRepositories
         public static List<Teacher> GetTeachers()
         {
             var db = new DnevnikEntities();
-            var teachers = db.Teachers.ToList();
+            var teachers = db.Teachers.Where(t => t.IsAdmin == 0).ToList();
             db.Dispose();
             return teachers;
         }

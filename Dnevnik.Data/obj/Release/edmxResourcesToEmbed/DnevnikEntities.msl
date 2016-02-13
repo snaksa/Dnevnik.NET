@@ -21,14 +21,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Subjects">
-      <EntityTypeMapping TypeName="DnevnikDB.Subject">
-        <MappingFragment StoreEntitySet="Subjects">
-          <ScalarProperty Name="Title" ColumnName="Title" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Schedules">
       <EntityTypeMapping TypeName="DnevnikDB.Schedule">
         <MappingFragment StoreEntitySet="Schedule">
@@ -83,6 +75,15 @@
           <ScalarProperty Name="Student_id" ColumnName="Student_id" />
           <ScalarProperty Name="Period" ColumnName="Period" />
           <ScalarProperty Name="Date1" ColumnName="Date1" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Subjects">
+      <EntityTypeMapping TypeName="DnevnikDB.Subject">
+        <MappingFragment StoreEntitySet="Subjects">
+          <ScalarProperty Name="IsZip" ColumnName="IsZip" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>

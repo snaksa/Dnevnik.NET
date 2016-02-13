@@ -1,5 +1,7 @@
 ﻿@model Dnevnik.Web.ViewModels.ScheduleViewModel
-
+@{
+    TempData["title"] = "Програма";
+}
 <div id="page-wrapper">
     <div id="page-inner">
         @using (Html.BeginForm("SaveSchedule", "Schedule", FormMethod.Post))

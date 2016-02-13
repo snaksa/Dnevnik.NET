@@ -160,6 +160,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AdminControllers\AdminController.cs" />
     <Compile Include="Controllers\AdminControllers\ClassesController.cs" />
+    <Compile Include="Controllers\AdminControllers\AdminStatsController.cs" />
     <Compile Include="Controllers\AdminControllers\SubjectsController.cs" />
     <Compile Include="Controllers\AdminControllers\TeachersController.cs" />
     <Compile Include="Controllers\AttendanceController.cs" />
@@ -167,6 +168,7 @@
     <Compile Include="Controllers\GradesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ScheduleController.cs" />
+    <Compile Include="Controllers\StatsController.cs" />
     <Compile Include="Controllers\StudentsController.cs" />
     <Compile Include="Filters\AdminLoggedAttribute.cs" />
     <Compile Include="Filters\LoggedAttribute.cs" />
@@ -183,6 +185,7 @@
     <Compile Include="ViewModels\GradesViewModel.cs" />
     <Compile Include="ViewModels\IndexViewModel.cs" />
     <Compile Include="ViewModels\ScheduleViewModel.cs" />
+    <Compile Include="ViewModels\StatsViewModel.cs" />
     <Compile Include="ViewModels\StudentsViewModel.cs" />
     <Compile Include="ViewModels\SubjectsViewModel.cs" />
     <Compile Include="ViewModels\TeachersViewModel.cs" />
@@ -287,6 +290,8 @@
     <Content Include="Views\Attendance\Show.cshtml" />
     <Content Include="Views\Home\_StudentDetails.cshtml" />
     <Content Include="Views\Subjects\Show.cshtml" />
+    <Content Include="Views\AdminStats\Show.cshtml" />
+    <Content Include="Views\Stats\Show.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

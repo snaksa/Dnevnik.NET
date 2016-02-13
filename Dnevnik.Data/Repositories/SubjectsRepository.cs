@@ -17,13 +17,14 @@ namespace Dnevnik.Data.Repositories
             return subjects;
         }
 
-        public static void AddSubject(string title)
+        public static void AddSubject(string title, bool isZip)
         {
             using (var db = new DnevnikEntities())
             {
                 Subject s = new Subject()
                 {
-                    Title = title
+                    Title = title,
+                    IsZip = isZip
                 };
 
                 db.Subjects.Add(s);

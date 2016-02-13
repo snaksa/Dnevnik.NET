@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Free Bootstrap Admin Template : Dream</title>
+    <title>@TempData["title"]</title>
     <!-- Bootstrap Styles-->
     @Styles.Render("~/Content/assets/css/bootstrap.css")
     <!-- FontAwesome Styles-->
@@ -48,7 +48,7 @@
                     <li>
                         <div class="pageHeaderDiv">
                             <img src="~/Content/assets/img/userIcon.png" style="width: 25px;" />
-                            <span>@Request.Cookies["username"].Value</span>
+                            <span>@Request.Cookies["username"].Value @Request.Cookies["userClass"].Value</span>
                         </div>
                     </li>
                     <li>
@@ -85,7 +85,7 @@
                         <a href="~/Subjects/Show"><i class="fa fa-dashboard"></i>Предмети</a>
                     </li>
                     <li>
-                        <a href="index.html"><i class="fa fa-dashboard"></i>Справки</a>
+                        <a href="~/Stats/Show"><i class="fa fa-dashboard"></i>Справки</a>
                     </li>
                 </ul>
 

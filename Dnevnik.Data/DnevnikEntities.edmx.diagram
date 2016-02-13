@@ -7,12 +7,9 @@
       <Diagram DiagramId="535ea9a93af7438bb1081f62cd5155f7" Name="Diagram1">
         <EntityTypeShape EntityType="DnevnikDB.Class" Width="1.5" PointX="4.375" PointY="0.625" IsExpanded="true" />
         <EntityTypeShape EntityType="DnevnikDB.sysdiagram" Width="1.5" PointX="11.625" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DnevnikDB.Subject" Width="1.5" PointX="8.125" PointY="4" />
         <EntityTypeShape EntityType="DnevnikDB.Schedule" Width="1.5" PointX="6.625" PointY="0.75" />
         <AssociationConnector Association="DnevnikDB.FK_Schedule_Classes" />
-        <AssociationConnector Association="DnevnikDB.FK_Schedule_Subjects" />
         <EntityTypeShape EntityType="DnevnikDB.Grade" Width="1.5" PointX="9.625" PointY="1" />
-        <AssociationConnector Association="DnevnikDB.FK_Grades_Subjects" />
         <EntityTypeShape EntityType="DnevnikDB.Student" Width="1.5" PointX="1.75" PointY="0.5" />
         <AssociationConnector Association="DnevnikDB.FK_Students_Classes" />
         <AssociationConnector Association="DnevnikDB.FK_Grades_Students" />
@@ -20,6 +17,9 @@
         <AssociationConnector Association="DnevnikDB.FK_Teachers_Classes" />
         <EntityTypeShape EntityType="DnevnikDB.Attendance" Width="1.5" PointX="2.25" PointY="4.125" />
         <AssociationConnector Association="DnevnikDB.FK_Attendance_Students" />
+        <EntityTypeShape EntityType="DnevnikDB.Subject" Width="1.5" PointX="0.75" PointY="7.875" />
+        <AssociationConnector Association="DnevnikDB.FK_Grades_Subjects" />
+        <AssociationConnector Association="DnevnikDB.FK_Schedule_Subjects" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

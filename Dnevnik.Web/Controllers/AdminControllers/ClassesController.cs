@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace Dnevnik.Web.Controllers.AdminControllers
 {
-    public class ClassesController : Controller
+    public class ClassesController : AdminController
     {
         // GET: Classes
         public ActionResult Show()

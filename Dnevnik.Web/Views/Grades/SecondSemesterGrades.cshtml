@@ -1,4 +1,7 @@
 ﻿@model Dnevnik.Web.ViewModels.GradesViewModel
+@{
+    TempData["title"] = "Оценки - II срок";
+}
 <div id="page-wrapper">
     <div id="page-inner">
         <div class="row">
@@ -45,7 +48,7 @@
                                     <th width="5%" style="text-align: center;">IV</th>
                                     <th width="5%" style="text-align: center;">V</th>
                                     <th width="5%" style="text-align: center;">VI</th>
-                                    <th width="5%" style="text-align: center;">I ср.</th>
+                                    <th width="5%" style="text-align: center;">II ср.</th>
                                     <th width="5%" style="text-align: center;">Год.</th>
 
                                 </tr>
@@ -55,7 +58,7 @@
                                 {
                                     <tr class="odd gradeX">
                                         @Html.HiddenFor(m => @Model.Students[i].Id)
-                                        <td title="123">@Model.Students[i].Number. @Model.Students[i].Name</td>
+                                        <td title="123" style="text-align:center;">@Model.Students[i].Number.</td>
                                         @for (int j = 0; j < 7; j++)
                                         {
                                             <td>@Html.EditorFor(m => @Model.Students[i].Grades[j], new { htmlattributes = new { @class = "form-control" } })</td>

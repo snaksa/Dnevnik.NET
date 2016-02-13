@@ -11,5 +11,6 @@ namespace Dnevnik.Web.ViewModels
         public List<Subject> Subjects { get; set; }
 
         public string Title { get; set; }
+        public bool IsZip { get; set; }
     }
 }

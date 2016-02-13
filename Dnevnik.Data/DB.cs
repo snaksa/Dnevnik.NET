@@ -13,7 +13,7 @@
         public static Teacher LoginUser(string username, string password)
         {
             var db = new DnevnikEntities();
-            var user = db.Teachers.Where(t => t.Email == username && t.Password == password).FirstOrDefault();
+            var user = db.Teachers.Include("Class").Where(t => t.Email == username && t.Password == password).FirstOrDefault();
             return user;
         }
 
@@ -49,12 +49,14 @@
                 .GroupBy(s => new
                 {
                     Id = s.Subject.Id,
-                    Title = s.Subject.Title
+                    Title = s.Subject.Title,
+                    IsZip = s.Subject.IsZip
                 })
                 .Select(o => new SubjectVM
                 {
                     Id = o.Key.Id,
-                    Title = o.Key.Title
+                    Title = o.Key.Title,
+                    IsZip = o.Key.IsZip
                 })
                 .ToList();
             db.Dispose();

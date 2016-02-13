@@ -11,5 +11,6 @@ namespace Dnevnik.Data.ViewModels
         public int Id { get; set; }
         public string Title { get; set; }
         public int Semester { get; set; }
+        public bool IsZip { get; set; }
     }
 }

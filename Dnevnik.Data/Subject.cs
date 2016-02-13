@@ -16,14 +16,15 @@ namespace Dnevnik.Data
     {
         public Subject()
         {
-            this.Schedules = new HashSet<Schedule>();
             this.Grades = new HashSet<Grade>();
+            this.Schedules = new HashSet<Schedule>();
         }
     
         public int Id { get; set; }
         public string Title { get; set; }
+        public bool IsZip { get; set; }
     
-        public virtual ICollection<Schedule> Schedules { get; set; }
         public virtual ICollection<Grade> Grades { get; set; }
+        public virtual ICollection<Schedule> Schedules { get; set; }
     }
 }
