@@ -1,0 +1,55 @@
+﻿@model List<Dnevnik.Data.ViewModels.SubjectVM>
+@{
+    TempData["title"] = "Оценки";
+}
+<div id="page-wrapper">
+    <div id="page-inner">
+        @using (Html.BeginForm("SaveSchedule", "Schedule", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="page-header" style="margin-bottom: 10px;">
+                        Оценки
+                    </h1>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Списък с предмети
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th width="10%" style="text-align: center;">#</th>
+                                    <th width="45%">Предмет</th>
+                                    <th width="45%">Редакция</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for (int i = 0; i < @Model.Count; i++)
+                                {
+                                    <tr>
+                                        <td align="center">@(i + 1)</td>
+                                        <td>@Model[i].Title</td>
+                                        <td>
+                                            @Html.ActionLink("Първи срок", "Show", new { semester = 1, id = @Model[i].Id }, new { @class = "editGradesLink" })
+                                            @Html.ActionLink("Втори срок", "Show", new { semester = 2, id = @Model[i].Id }, new { @class = "editGradesLink" })
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        }
+        <!-- /. ROW  -->
+        <footer></footer>
+    </div>
+    <!-- /. PAGE INNER  -->
+</div>

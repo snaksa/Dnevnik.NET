@@ -70,5 +70,67 @@ namespace Dnevnik.Web.Controllers
             }
             return stats;
         }
+
+
+        public ActionResult Attendance(DateTime? dd1, DateTime? dd2)
+        {
+            DateTime d1 = new DateTime(DateTime.Now.Year, DateTime.Now.Month - 1, DateTime.Now.Day);
+            DateTime d2 = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+            
+            if (dd1 != null)
+            {
+                d1 = dd1.Value;
+                d2 = dd2.Value;
+            }
+
+            var students = StudentsRepository.GetAllStudents(this.CurrentUser.Class_id);
+            var attendance = AttendanceRepository.GetAttendanceBetweenDates(d1, d2, this.CurrentUser.Class_id);
+            int[] izvineni = new int[100];
+            string[] neizvineni = new string[100];
+            int count = 0;
+            foreach (var stud in students)
+            {
+                var studNeiz = attendance.Where(a => a.Student_id == stud.Id && a.Att_type == 0).Count();
+                var studZak = attendance.Where(a => a.Student_id == stud.Id && a.Att_type == 1).Count();
+                var studIzv = attendance.Where(a => a.Student_id == stud.Id && a.Att_type == 2).Count();
+
+                izvineni[count] = studIzv;
+
+                int c = studZak - studZak % 3;
+                studNeiz += c / 3;
+                string neizv = studNeiz.ToString();
+                if (studZak % 3 != 0)
+                {
+                    neizv += " " + studZak % 3 + "/3";
+                }
+                neizvineni[count] = neizv;
+
+                count++;
+            }
+
+            AttendanceStatsViewModel vm = new AttendanceStatsViewModel()
+            {
+                Izvineni = izvineni,
+                Neizvineni = neizvineni,
+                Students = students,
+                Date1 = d1,
+                Date2 = d2
+            };
+
+            return View(vm);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Attendance(string dd1, string dd2)
+        {
+            string[] date = dd1.Split('-');
+            DateTime d1 = new DateTime(Int32.Parse(date[2]), Int32.Parse(date[1]), Int32.Parse(date[0]));
+
+            date = dd2.Split('-');
+            DateTime d2 = new DateTime(Int32.Parse(date[2]), Int32.Parse(date[1]), Int32.Parse(date[0]));
+
+            return RedirectToAction("Attendance", new { dd1 = d1, dd2 = d2 });
+        }
     }
 }

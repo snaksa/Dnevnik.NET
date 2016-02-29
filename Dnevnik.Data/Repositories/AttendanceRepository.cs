@@ -88,5 +88,22 @@ namespace Dnevnik.Data.Repositories
                 db.SaveChanges();
             }
         }
+
+        public static List<Attendance> GetAttendanceBetweenDates(DateTime d1, DateTime d2, int class_id)
+        {
+            using (var db = new DnevnikEntities())
+            {
+                var att = db.Attendances.Where(a => a.Date1 >= d1 && a.Date1 <= d2 && a.Student.Class_id == class_id).ToList();
+                return att;
+            }
+        }
+
+        internal static void RemoveAllAttendance()
+        {
+            var db = new DnevnikEntities();
+            db.Attendances.RemoveRange(db.Attendances.ToList());
+            db.SaveChanges();
+            db.Dispose();
+        }
     }
 }

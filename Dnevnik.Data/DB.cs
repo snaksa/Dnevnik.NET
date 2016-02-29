@@ -106,5 +106,14 @@
                 db.SaveChanges();
             }
         }
+
+        public static int GetClassId(int number, int letter)
+        {
+            using (var db = new DnevnikEntities())
+            {
+                int id = db.Classes.Where(c => c.Number == number && c.Letter == letter).Select(c => c.Id).FirstOrDefault();
+                return id;
+            }
+        }
     }
 }

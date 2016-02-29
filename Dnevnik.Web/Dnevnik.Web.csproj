@@ -39,6 +39,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Excel.4.5">
+      <HintPath>C:\Users\Sinan\Desktop\output\net45\Excel.4.5.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>C:\Users\Sinan\Desktop\output\net45\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -159,6 +165,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AdminControllers\AdminController.cs" />
+    <Compile Include="Controllers\AdminControllers\AdminStudentsController.cs" />
     <Compile Include="Controllers\AdminControllers\ClassesController.cs" />
     <Compile Include="Controllers\AdminControllers\AdminStatsController.cs" />
     <Compile Include="Controllers\AdminControllers\SubjectsController.cs" />
@@ -169,7 +176,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ScheduleController.cs" />
     <Compile Include="Controllers\StatsController.cs" />
-    <Compile Include="Controllers\StudentsController.cs" />
+    <Compile Include="Filters\StudentsController.cs" />
     <Compile Include="Filters\AdminLoggedAttribute.cs" />
     <Compile Include="Filters\LoggedAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -180,6 +187,8 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\AdminStatsViewModel.cs" />
+    <Compile Include="ViewModels\AttendanceStatsViewModel.cs" />
     <Compile Include="ViewModels\AttendanceViewModel.cs" />
     <Compile Include="ViewModels\ClassesViewModel.cs" />
     <Compile Include="ViewModels\GradesViewModel.cs" />
@@ -198,6 +207,7 @@
     <Content Include="Content\assets\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\assets\img\deleteButton.png" />
     <Content Include="Content\assets\img\detailsButton.png" />
+    <Content Include="Content\assets\img\loading.gif" />
     <Content Include="Content\assets\img\loginBackground.jpg" />
     <Content Include="Content\assets\img\loginUserIcon.png" />
     <Content Include="Content\assets\img\logoutIcon.png" />
@@ -290,11 +300,15 @@
     <Content Include="Views\Attendance\Show.cshtml" />
     <Content Include="Views\Home\_StudentDetails.cshtml" />
     <Content Include="Views\Subjects\Show.cshtml" />
-    <Content Include="Views\AdminStats\Show.cshtml" />
+    <Content Include="Views\AdminStats\ShowClass.cshtml" />
     <Content Include="Views\Stats\Show.cshtml" />
+    <Content Include="Views\AdminStats\Show.cshtml" />
+    <Content Include="Views\Stats\Attendance.cshtml" />
+    <Content Include="Views\AdminStudents\Show.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\TempFiles\" />
     <Folder Include="Views\Admin\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>

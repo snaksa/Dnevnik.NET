@@ -55,3 +55,6 @@ E:\Windows\Dnevnik.NET\Dnevnik.Web\bin\Microsoft.Owin.Security.MicrosoftAccount.
 E:\Windows\Dnevnik.NET\Dnevnik.Web\obj\Release\Dnevnik.Web.csprojResolveAssemblyReference.cache
 E:\Windows\Dnevnik.NET\Dnevnik.Web\obj\Release\Dnevnik.Web.dll
 E:\Windows\Dnevnik.NET\Dnevnik.Web\obj\Release\Dnevnik.Web.pdb
+E:\Windows\Dnevnik.NET\Dnevnik.Web\bin\Excel.4.5.dll
+E:\Windows\Dnevnik.NET\Dnevnik.Web\bin\ICSharpCode.SharpZipLib.dll
+E:\Windows\Dnevnik.NET\Dnevnik.Web\bin\Excel.4.5.pdb

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dnevnik.Data.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -25,7 +26,7 @@ namespace Dnevnik.Data
         public static List<Student> GetAllStudents(int class_id)
         {
             var db = new DnevnikEntities();
-            var students = db.Students.Where(s => s.Class_id == class_id).OrderBy(s => s.Number).ToList();
+            var students = db.Students.Include("Grades").Include("Class").Where(s => s.Class_id == class_id).OrderBy(s => s.Number).ToList();
             db.Dispose();
             return students;
         }
@@ -71,9 +72,33 @@ namespace Dnevnik.Data
             if (student == null) throw new ArgumentException();
 
             db.Grades.RemoveRange(db.Grades.Where(g => g.Student_id == id));
+            db.Attendances.RemoveRange(db.Attendances.Where(a => a.Student_id == id).ToList());
             db.Students.Remove(student);
             //remove attendance records
 
+            db.SaveChanges();
+            db.Dispose();
+        }
+
+        public static void ImportStudents(List<Student> students)
+        {
+            var db = new DnevnikEntities();
+            foreach (var stud in students)
+            {
+                db.Students.Add(stud);
+                db.Entry(stud).State = EntityState.Added;
+            }
+            db.SaveChanges();
+            db.Dispose();
+        }
+
+        public static void DeleteAllStudents()
+        {
+            GradesRepository.DeleteAllGrades();
+            AttendanceRepository.RemoveAllAttendance();
+
+            var db = new DnevnikEntities();
+            db.Students.RemoveRange(db.Students);
             db.SaveChanges();
             db.Dispose();
         }

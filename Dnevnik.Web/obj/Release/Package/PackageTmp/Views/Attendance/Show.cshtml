@@ -1,0 +1,107 @@
+﻿@model Dnevnik.Web.ViewModels.AttendanceViewModel
+@{
+    TempData["title"] = "Отсъствия";
+}
+<div id="page-wrapper">
+    <div id="page-inner">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="page-header">Отсъствия</h1>
+            </div>
+        </div>
+
+        @if (TempData["success"] == "1")
+        {
+            <div class="alert alert-success">
+                Промените са запазени успешно.
+            </div>
+        }
+        else if (TempData["success"] == "0")
+        {
+            <div class="alert alert-danger">
+                Нещо се обърка. Промените не бяха запазени успешно.
+            </div>
+        }
+
+        <!-- Advanced Tables -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                @using (Html.BeginForm("ShowAttendance", "Attendance", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <div style="float: left;">
+                        Отсъствия за
+                        <input type="text" name="dateToShow" id="date" class="tcal" value="@Model.Date" />
+                        <input type="submit" class="attendanceButton" value="Покажи" />
+                    </div>
+                }
+                <div style="clear:both;"></div>
+            </div>
+            @using (Html.BeginForm("UpdateAttendance", "Attendance", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken();
+                @Html.HiddenFor(m => @Model.Date2);
+
+                <div style="float:right;margin: 10px;">
+                    <input type="submit" class="saveChangesButton" value="Запази промените" />
+                </div>
+
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                            <thead>
+                                <tr>
+                                    <th width="5%" style="text-align: center;">Час</th>
+                                    <th width="35%" style="text-align: center;">Предмет</th>
+                                    <th width="20%" style="text-align: center;">Неизвинени</th>
+                                    <th width="20%" style="text-align: center;">Закъснения</th>
+                                    <th width="20%" style="text-align: center;">Извинени</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for (int i = 0; i < 7; i++)
+                                {
+                                    Model.Periods[i] = new Dnevnik.Data.ViewModels.PeriodAttendance();
+                                    Model.Periods[i].PeriodId = i + 1;
+                                    Model.Periods[i].Neizvineni = @String.Join(",", Model.AllAttendances.Where(a => a.Period == i + 1 && a.Att_type == 0).OrderBy(a => a.Student.Number).Select(a => a.Student.Number).ToArray());
+                                    Model.Periods[i].Zakusneniq = @String.Join(",", Model.AllAttendances.Where(a => a.Period == i + 1 && a.Att_type == 1).OrderBy(a => a.Student.Number).Select(a => a.Student.Number).ToArray());
+                                    Model.Periods[i].Izvineni = @String.Join(",", Model.AllAttendances.Where(a => a.Period == i + 1 && a.Att_type == 2).OrderBy(a => a.Student.Number).Select(a => a.Student.Number).ToArray());
+                                    <tr>
+                                        <td class="tableCellCentered">
+                                            @(i + 1).
+                                            @Html.HiddenFor(m => Model.Periods[i].PeriodId)
+                                        </td>
+                                        @if (@Model.AllSchedule.Where(s => s.Period == i + 1).Select(s => s.Subject.Title).FirstOrDefault() != null)
+                                        {
+                                            @:
+                                            <td class="tableCellCentered" style="text-align: left;">@Model.AllSchedule.Where(s => s.Period == i + 1).Select(s => s.Subject.Title).FirstOrDefault()</td>
+                                            @:
+                                            <td>@Html.EditorFor(m => Model.Periods[i].Neizvineni, new { htmlAttributes = new { @class = "form-control" } })</td>
+                                            @:
+                                            <td>@Html.EditorFor(m => Model.Periods[i].Zakusneniq, new { htmlAttributes = new { @class = "form-control" } })</td>
+                                            @:
+                                            <td>@Html.EditorFor(m => Model.Periods[i].Izvineni, new { htmlAttributes = new { @class = "form-control" } })</td>
+                                        }
+                                        else
+                                        {
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        }
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+            }
+        </div>
+        <!--End Advanced Tables -->
+        <!-- /. ROW  -->
+        <footer></footer>
+    </div>
+    <!-- /. PAGE INNER  -->
+</div>

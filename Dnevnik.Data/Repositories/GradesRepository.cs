@@ -140,5 +140,13 @@ namespace Dnevnik.Data
 
             return month;
         }
+
+        internal static void DeleteAllGrades()
+        {
+            var db = new DnevnikEntities();
+            db.Grades.RemoveRange(db.Grades.ToList());
+            db.SaveChanges();
+            db.Dispose();
+        }
     }
 }
