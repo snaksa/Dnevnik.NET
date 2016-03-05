@@ -5,11 +5,12 @@
     using Dnevnik.Data;
     using System.Collections.Generic;
     using System.Data.Entity;
-    using Dnevnik.Web.ViewModels;
     using System;
     using System.Net.Mail;
     using System.Text;
     using System.Web;
+    using Dnevnik.Repositories.Repositories;
+    using Dnevnik.ViewModels.Web;
 
     public class HomeController : Controller
     {

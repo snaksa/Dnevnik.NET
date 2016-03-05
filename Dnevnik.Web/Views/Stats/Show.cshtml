@@ -1,4 +1,4 @@
-﻿@model Dnevnik.Web.ViewModels.StatsViewModel
+﻿@model Dnevnik.ViewModels.Web.StatsViewModel
 @{
     TempData["title"] = "Справка - " + Model.Semester + " срок";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -9,7 +9,7 @@
     <div id="page-inner">
         @for (int i = 1; i <= 2; i++)
         {
-            List<Dnevnik.Data.ViewModels.SubjectStats> stats = new List<Dnevnik.Data.ViewModels.SubjectStats>();
+            List<Dnevnik.ViewModels.Data.SubjectStats> stats = new List<Dnevnik.ViewModels.Data.SubjectStats>();
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <div style="float: left;">

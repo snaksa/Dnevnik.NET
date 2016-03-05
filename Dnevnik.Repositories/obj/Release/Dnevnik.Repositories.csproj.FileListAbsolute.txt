@@ -1,0 +1,14 @@
+E:\Windows\Dnevnik.NET\Dnevnik.Repositories\obj\Release\Dnevnik.Repositories.csprojResolveAssemblyReference.cache
+E:\Windows\Dnevnik.NET\Dnevnik.Repositories\bin\Release\Dnevnik.Repositories.dll.config
+E:\Windows\Dnevnik.NET\Dnevnik.Repositories\bin\Release\Dnevnik.Repositories.dll
+E:\Windows\Dnevnik.NET\Dnevnik.Repositories\bin\Release\Dnevnik.Repositories.pdb
+E:\Windows\Dnevnik.NET\Dnevnik.Repositories\bin\Release\Dnevnik.Data.dll
+E:\Windows\Dnevnik.NET\Dnevnik.Repositories\bin\Release\Dnevnik.ViewModels.dll
+E:\Windows\Dnevnik.NET\Dnevnik.Repositories\bin\Release\EntityFramework.dll
+E:\Windows\Dnevnik.NET\Dnevnik.Repositories\bin\Release\EntityFramework.SqlServer.dll
+E:\Windows\Dnevnik.NET\Dnevnik.Repositories\bin\Release\Dnevnik.Data.pdb
+E:\Windows\Dnevnik.NET\Dnevnik.Repositories\bin\Release\Dnevnik.ViewModels.pdb
+E:\Windows\Dnevnik.NET\Dnevnik.Repositories\bin\Release\EntityFramework.xml
+E:\Windows\Dnevnik.NET\Dnevnik.Repositories\bin\Release\EntityFramework.SqlServer.xml
+E:\Windows\Dnevnik.NET\Dnevnik.Repositories\obj\Release\Dnevnik.Repositories.dll
+E:\Windows\Dnevnik.NET\Dnevnik.Repositories\obj\Release\Dnevnik.Repositories.pdb

@@ -1,0 +1,9 @@
+E:\Windows\Dnevnik.NET\ViewModels\bin\Release\Dnevnik.ViewModels.dll
+E:\Windows\Dnevnik.NET\ViewModels\bin\Release\Dnevnik.ViewModels.pdb
+E:\Windows\Dnevnik.NET\ViewModels\bin\Release\Dnevnik.Data.dll
+E:\Windows\Dnevnik.NET\ViewModels\bin\Release\EntityFramework.dll
+E:\Windows\Dnevnik.NET\ViewModels\bin\Release\Dnevnik.Data.pdb
+E:\Windows\Dnevnik.NET\ViewModels\bin\Release\EntityFramework.xml
+E:\Windows\Dnevnik.NET\ViewModels\obj\Release\Dnevnik.ViewModels.csprojResolveAssemblyReference.cache
+E:\Windows\Dnevnik.NET\ViewModels\obj\Release\Dnevnik.ViewModels.dll
+E:\Windows\Dnevnik.NET\ViewModels\obj\Release\Dnevnik.ViewModels.pdb

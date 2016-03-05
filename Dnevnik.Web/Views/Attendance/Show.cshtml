@@ -1,4 +1,4 @@
-﻿@model Dnevnik.Web.ViewModels.AttendanceViewModel
+﻿@model Dnevnik.ViewModels.Web.AttendanceViewModel
 @{
     TempData["title"] = "Отсъствия";
 }
@@ -61,7 +61,7 @@
                             <tbody>
                                 @for (int i = 0; i < 7; i++)
                                 {
-                                    Model.Periods[i] = new Dnevnik.Data.ViewModels.PeriodAttendance();
+                                    Model.Periods[i] = new Dnevnik.ViewModels.Data.PeriodAttendance();
                                     Model.Periods[i].PeriodId = i + 1;
                                     Model.Periods[i].Neizvineni = @String.Join(",", Model.AllAttendances.Where(a => a.Period == i + 1 && a.Att_type == 0).OrderBy(a => a.Student.Number).Select(a => a.Student.Number).ToArray());
                                     Model.Periods[i].Zakusneniq = @String.Join(",", Model.AllAttendances.Where(a => a.Period == i + 1 && a.Att_type == 1).OrderBy(a => a.Student.Number).Select(a => a.Student.Number).ToArray());

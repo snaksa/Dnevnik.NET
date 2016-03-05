@@ -1,10 +1,15 @@
+E:\Windows\Dnevnik.NET\Dnevnik.Web\obj\Release\Dnevnik.Web.csprojResolveAssemblyReference.cache
 E:\Windows\Dnevnik.NET\Dnevnik.Web\bin\Dnevnik.Web.dll.config
 E:\Windows\Dnevnik.NET\Dnevnik.Web\bin\Dnevnik.Web.dll
 E:\Windows\Dnevnik.NET\Dnevnik.Web\bin\Dnevnik.Web.pdb
 E:\Windows\Dnevnik.NET\Dnevnik.Web\bin\Antlr3.Runtime.dll
 E:\Windows\Dnevnik.NET\Dnevnik.Web\bin\Dnevnik.Data.dll
+E:\Windows\Dnevnik.NET\Dnevnik.Web\bin\Dnevnik.Repositories.dll
+E:\Windows\Dnevnik.NET\Dnevnik.Web\bin\Dnevnik.ViewModels.dll
 E:\Windows\Dnevnik.NET\Dnevnik.Web\bin\EntityFramework.dll
 E:\Windows\Dnevnik.NET\Dnevnik.Web\bin\EntityFramework.SqlServer.dll
+E:\Windows\Dnevnik.NET\Dnevnik.Web\bin\Excel.4.5.dll
+E:\Windows\Dnevnik.NET\Dnevnik.Web\bin\ICSharpCode.SharpZipLib.dll
 E:\Windows\Dnevnik.NET\Dnevnik.Web\bin\Microsoft.AspNet.Identity.Core.dll
 E:\Windows\Dnevnik.NET\Dnevnik.Web\bin\Microsoft.AspNet.Identity.EntityFramework.dll
 E:\Windows\Dnevnik.NET\Dnevnik.Web\bin\Microsoft.AspNet.Identity.Owin.dll
@@ -29,6 +34,9 @@ E:\Windows\Dnevnik.NET\Dnevnik.Web\bin\System.Web.WebPages.dll
 E:\Windows\Dnevnik.NET\Dnevnik.Web\bin\System.Web.WebPages.Razor.dll
 E:\Windows\Dnevnik.NET\Dnevnik.Web\bin\WebGrease.dll
 E:\Windows\Dnevnik.NET\Dnevnik.Web\bin\Dnevnik.Data.pdb
+E:\Windows\Dnevnik.NET\Dnevnik.Web\bin\Dnevnik.Repositories.pdb
+E:\Windows\Dnevnik.NET\Dnevnik.Web\bin\Dnevnik.ViewModels.pdb
+E:\Windows\Dnevnik.NET\Dnevnik.Web\bin\Excel.4.5.pdb
 E:\Windows\Dnevnik.NET\Dnevnik.Web\bin\System.Web.Helpers.xml
 E:\Windows\Dnevnik.NET\Dnevnik.Web\bin\System.Web.Mvc.xml
 E:\Windows\Dnevnik.NET\Dnevnik.Web\bin\System.Web.Optimization.xml
@@ -52,9 +60,5 @@ E:\Windows\Dnevnik.NET\Dnevnik.Web\bin\Microsoft.Owin.Security.OAuth.xml
 E:\Windows\Dnevnik.NET\Dnevnik.Web\bin\Microsoft.Owin.Security.Google.xml
 E:\Windows\Dnevnik.NET\Dnevnik.Web\bin\Microsoft.Owin.Security.Twitter.xml
 E:\Windows\Dnevnik.NET\Dnevnik.Web\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-E:\Windows\Dnevnik.NET\Dnevnik.Web\obj\Release\Dnevnik.Web.csprojResolveAssemblyReference.cache
 E:\Windows\Dnevnik.NET\Dnevnik.Web\obj\Release\Dnevnik.Web.dll
 E:\Windows\Dnevnik.NET\Dnevnik.Web\obj\Release\Dnevnik.Web.pdb
-E:\Windows\Dnevnik.NET\Dnevnik.Web\bin\Excel.4.5.dll
-E:\Windows\Dnevnik.NET\Dnevnik.Web\bin\ICSharpCode.SharpZipLib.dll
-E:\Windows\Dnevnik.NET\Dnevnik.Web\bin\Excel.4.5.pdb

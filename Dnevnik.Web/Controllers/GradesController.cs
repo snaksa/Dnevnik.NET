@@ -1,5 +1,6 @@
 ﻿using Dnevnik.Data;
-using Dnevnik.Web.ViewModels;
+using Dnevnik.Repositories;
+using Dnevnik.ViewModels.Web;
 using System;
 using System.Collections.Generic;
 using System.Linq;
