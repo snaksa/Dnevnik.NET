@@ -46,6 +46,9 @@
       <HintPath>C:\Users\Sinan\Desktop\output\net45\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -176,7 +179,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ScheduleController.cs" />
     <Compile Include="Controllers\StatsController.cs" />
-    <Compile Include="Filters\StudentsController.cs" />
+    <Compile Include="Controllers\StudentsController.cs" />
     <Compile Include="Filters\AdminLoggedAttribute.cs" />
     <Compile Include="Filters\LoggedAttribute.cs" />
     <Compile Include="Global.asax.cs">

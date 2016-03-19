@@ -49,20 +49,22 @@
                 {
                     Id = s.Subject.Id,
                     Title = s.Subject.Title,
-                    IsZip = s.Subject.IsZip
+                    IsZip = s.Subject.IsZip,
+                    Semester = s.Semester
                 })
                 .Select(o => new SubjectVM
                 {
                     Id = o.Key.Id,
                     Title = o.Key.Title,
-                    IsZip = o.Key.IsZip
+                    IsZip = o.Key.IsZip,
+                    Semester = o.Key.Semester
                 })
                 .ToList();
             db.Dispose();
             return subjects;
         }
 
-        private static string ConvertClassLetter(int letter)
+        public static string ConvertClassLetter(int letter)
         {
             if (letter == 1) return "а";
             if (letter == 2) return "б";

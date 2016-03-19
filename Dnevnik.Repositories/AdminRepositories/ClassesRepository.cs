@@ -24,7 +24,7 @@ namespace Dnevnik.Repositories.AdminRepositories
         public static List<Class> GetClasses()
         {
             var db = new DnevnikEntities();
-            var classes = db.Classes.Where(c => c.Id > 1)
+            var classes = db.Classes.Include("Teachers").Where(c => c.Id > 1)
                 .OrderBy(c => c.Number)
                 .ThenBy(c => c.Letter).ToList();
             db.Dispose();

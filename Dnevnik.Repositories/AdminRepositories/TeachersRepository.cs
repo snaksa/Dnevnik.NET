@@ -41,5 +41,14 @@ namespace Dnevnik.Repositories.AdminRepositories
                 db.SaveChanges();
             }
         }
+
+        public static void DeleteTeacher(int id)
+        {
+            using (var db = new DnevnikEntities())
+            {
+                db.Teachers.Remove(db.Teachers.Where(t => t.Id == id).FirstOrDefault());
+                db.SaveChanges();
+            }
+        }
     }
 }

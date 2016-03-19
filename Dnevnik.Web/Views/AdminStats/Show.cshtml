@@ -16,6 +16,45 @@
 
         <div class="panel panel-default">
             <div class="panel-heading">
+                <div style="float: left;">Доклад</div>
+                <div style="clear:both;"></div>
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover" id="dataTables-example" style="width: 200px;">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <a href="@Url.Action("GetStatsToExcel", "AdminStats", new { semester = 21 })" class="tableButton">
+                                        Първи срок
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="@Url.Action("GetStatsToExcel", "AdminStats", new { semester = 22 })" class="tableButton">
+                                        Втори срок
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="@Url.Action("GetStatsToExcel", "AdminStats", new { semester = 23 })" class="tableButton">
+                                        Година
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <footer></footer>
+                </div>
+                <!-- /. PAGE INNER  -->
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
                 <div style="float: left;">Класове</div>
                 <div style="clear:both;"></div>
             </div>

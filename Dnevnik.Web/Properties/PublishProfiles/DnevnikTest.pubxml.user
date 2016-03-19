@@ -6,7 +6,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <EncryptedPassword />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAk1VGchFgiEq3D8UnKnbrWgAAAAACAAAAAAAQZgAAAAEAACAAAADqbD0caDIAYK8Vy6Jeo2ong51DNHqli60ND2SHHIZmTQAAAAAOgAAAAAIAACAAAAAQXl+ZQjA35PQP3LH52q4Voe+aEy3rU9i6Z+Asy0EKsyAAAAChueqnF01tOlrEccDGe/sd+L9G/3Nk5kiImJIpLIdFx0AAAABAIA82/yWRgFz46wmHSDJ0G9XBa91uYVZHF+gv2k7ahVU2QX+H/GPsGxgg0/IKIGKmhIDQ2OQnxaqIbt2Xjbsk</EncryptedPassword>
     <_PublishTargetUrl>ftp://www.sinantests.somee.com/www.sinantests.somee.com</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
@@ -14,10 +14,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/25/2015 18:59:05</publishTime>
     </File>
     <File Include="bin/Dnevnik.Data.dll">
-      <publishTime>02/27/2016 16:41:52</publishTime>
+      <publishTime>03/13/2016 19:00:19</publishTime>
+    </File>
+    <File Include="bin/Dnevnik.Repositories.dll">
+      <publishTime>03/15/2016 19:48:18</publishTime>
+    </File>
+    <File Include="bin/Dnevnik.ViewModels.dll">
+      <publishTime>03/14/2016 21:25:02</publishTime>
     </File>
     <File Include="bin/Dnevnik.Web.dll">
-      <publishTime>02/27/2016 16:57:50</publishTime>
+      <publishTime>03/15/2016 19:48:19</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>12/25/2015 18:59:10</publishTime>
@@ -305,28 +311,28 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/26/2015 13:56:10</publishTime>
     </File>
     <File Include="Views/AdminStats/Show.cshtml">
-      <publishTime>02/14/2016 19:20:09</publishTime>
+      <publishTime>03/05/2016 21:04:06</publishTime>
     </File>
     <File Include="Views/AdminStats/ShowClass.cshtml">
-      <publishTime>02/14/2016 19:01:19</publishTime>
+      <publishTime>03/14/2016 21:26:46</publishTime>
     </File>
     <File Include="Views/AdminStudents/Show.cshtml">
       <publishTime>02/27/2016 16:18:51</publishTime>
     </File>
     <File Include="Views/Attendance/Show.cshtml">
-      <publishTime>02/09/2016 19:28:34</publishTime>
+      <publishTime>03/05/2016 21:26:09</publishTime>
     </File>
     <File Include="Views/Classes/Show.cshtml">
-      <publishTime>02/09/2016 19:29:01</publishTime>
+      <publishTime>03/05/2016 21:04:39</publishTime>
     </File>
     <File Include="Views/Grades/FirstSemesterGrades.cshtml">
-      <publishTime>02/09/2016 19:29:52</publishTime>
+      <publishTime>03/05/2016 21:05:07</publishTime>
     </File>
     <File Include="Views/Grades/SecondSemesterGrades.cshtml">
-      <publishTime>02/09/2016 19:29:43</publishTime>
+      <publishTime>03/05/2016 21:05:00</publishTime>
     </File>
     <File Include="Views/Grades/Show.cshtml">
-      <publishTime>02/09/2016 19:29:19</publishTime>
+      <publishTime>03/05/2016 21:04:53</publishTime>
     </File>
     <File Include="Views/Home/About.cshtml">
       <publishTime>12/25/2015 19:22:25</publishTime>
@@ -356,10 +362,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/17/2016 18:23:52</publishTime>
     </File>
     <File Include="Views/Home/_StudentDetails.cshtml">
-      <publishTime>01/20/2016 17:32:34</publishTime>
+      <publishTime>03/05/2016 21:05:27</publishTime>
     </File>
     <File Include="Views/Schedule/Show.cshtml">
-      <publishTime>02/09/2016 19:30:06</publishTime>
+      <publishTime>03/05/2016 21:05:52</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>12/25/2015 18:59:09</publishTime>
@@ -377,19 +383,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/25/2015 18:59:10</publishTime>
     </File>
     <File Include="Views/Stats/Attendance.cshtml">
-      <publishTime>02/26/2016 22:28:14</publishTime>
+      <publishTime>03/05/2016 21:06:26</publishTime>
     </File>
     <File Include="Views/Stats/Show.cshtml">
-      <publishTime>02/13/2016 23:09:11</publishTime>
+      <publishTime>03/05/2016 21:27:04</publishTime>
     </File>
     <File Include="Views/Students/Show.cshtml">
-      <publishTime>02/09/2016 19:27:50</publishTime>
+      <publishTime>03/05/2016 21:06:47</publishTime>
     </File>
     <File Include="Views/Subjects/Show.cshtml">
-      <publishTime>02/12/2016 21:48:05</publishTime>
+      <publishTime>03/05/2016 21:07:00</publishTime>
     </File>
     <File Include="Views/Teachers/Show.cshtml">
-      <publishTime>02/09/2016 19:31:12</publishTime>
+      <publishTime>03/05/2016 21:07:10</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>12/25/2015 18:58:52</publishTime>
@@ -398,7 +404,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/25/2015 18:58:52</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>02/27/2016 16:44:09</publishTime>
+      <publishTime>03/05/2016 21:33:58</publishTime>
     </File>
   </ItemGroup>
 </Project>

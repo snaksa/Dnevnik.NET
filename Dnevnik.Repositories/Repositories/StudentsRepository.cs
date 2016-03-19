@@ -26,7 +26,7 @@ namespace Dnevnik.Repositories.Repositories
         public static List<Student> GetAllStudents(int class_id)
         {
             var db = new DnevnikEntities();
-            var students = db.Students.Include("Grades").Include("Class").Where(s => s.Class_id == class_id).OrderBy(s => s.Number).ToList();
+            var students = db.Students.Include("Grades").Include("Class").Include("Attendances").Where(s => s.Class_id == class_id).OrderBy(s => s.Number).ToList();
             db.Dispose();
             return students;
         }

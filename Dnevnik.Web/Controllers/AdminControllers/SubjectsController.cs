@@ -63,5 +63,12 @@ namespace Dnevnik.Web.Controllers.AdminControllers
 
             return RedirectToAction("Show");
         }
+
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            SubjectsRepository.DeleteSubject(id);
+            return RedirectToAction("Show");
+        }
     }
 }

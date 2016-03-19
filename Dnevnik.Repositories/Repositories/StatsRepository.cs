@@ -22,7 +22,14 @@ namespace Dnevnik.Repositories.Repositories
         public static List<Grade> GetAllGrades(int class_id, int semester)
         {
             DnevnikEntities db = new DnevnikEntities();
-            var grades = db.Grades.Where(g => g.Grade_month == semester && g.Student.Class_id == class_id).ToList();
+            var grades = new List<Grade>();
+            if (semester == 1) 
+                grades = db.Grades.Where(g => ((g.Grade_month >= 9 && g.Grade_month <= 12) || g.Grade_month == 1) && g.Student.Class_id == class_id).ToList();
+            else if(semester == 2)
+                grades = db.Grades.Where(g => (g.Grade_month >= 2 && g.Grade_month <= 6) && g.Student.Class_id == class_id).ToList();
+            else
+                grades = db.Grades.Where(g => g.Grade_month == semester && g.Student.Class_id == class_id).ToList();
+            
             db.Dispose();
             return grades;
         }

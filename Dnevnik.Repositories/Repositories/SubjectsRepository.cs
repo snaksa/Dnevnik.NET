@@ -51,5 +51,16 @@ namespace Dnevnik.Repositories.Repositories
                 db.SaveChanges();
             }
         }
+
+        public static void DeleteSubject(int id)
+        {
+            using (var db = new DnevnikEntities())
+            {
+                db.Schedules.RemoveRange(db.Schedules.Where(s => s.Subject_id == id));
+                db.Grades.RemoveRange(db.Grades.Where(g => g.Subject_id == id));
+                db.Subjects.Remove(db.Subjects.Where(s => s.Id == id).FirstOrDefault());
+                db.SaveChanges();
+            }
+        }
     }
 }
