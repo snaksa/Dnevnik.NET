@@ -297,6 +297,7 @@
     <Content Include="Views\AdminStats\Show.cshtml" />
     <Content Include="Views\Stats\Attendance.cshtml" />
     <Content Include="Views\AdminStudents\Show.cshtml" />
+    <Content Include="Views\Shared\_StatsPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

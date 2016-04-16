@@ -1,0 +1,80 @@
+﻿@model Dnevnik.ViewModels.Web.GradesViewModel
+@{
+    TempData["title"] = "Оценки - II срок";
+}
+<div id="page-wrapper">
+    <div id="page-inner">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="page-header">Оценки - II срок</h1>
+            </div>
+        </div>
+
+        @if (TempData["success"] == "1")
+        {
+            <div class="alert alert-success">
+                Промените са запазени успешно.
+            </div>
+        }
+        else if (TempData["success"] == "0")
+        {
+            <div class="alert alert-danger">
+                Нещо се обърка. Промените не бяха запазени успешно.
+            </div>
+        }
+
+        @using (Html.BeginForm("SaveGrades", "Grades", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(m => @Model.Subject_id)
+            @Html.HiddenFor(m => @Model.Semester)
+        <!-- Advanced Tables -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div style="float: left;">Списък с всички оценки</div>
+                    <div style="float:right;">
+                        <input type="submit" class="saveChangesButton" value="Запази промените" />
+                    </div>
+                    <div style="clear:both;"></div>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                            <thead>
+                                <tr>
+                                    <th width="5%" style="text-align: center;">Номер</th>
+                                    <th width="5%" style="text-align: center;">II</th>
+                                    <th width="5%" style="text-align: center;">III</th>
+                                    <th width="5%" style="text-align: center;">IV</th>
+                                    <th width="5%" style="text-align: center;">V</th>
+                                    <th width="5%" style="text-align: center;">VI</th>
+                                    <th width="5%" style="text-align: center;">II ср.</th>
+                                    <th width="5%" style="text-align: center;">Год.</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for (int i = 0; i < @Model.Students.Count; i++)
+                                {
+                                    <tr class="odd gradeX">
+                                        @Html.HiddenFor(m => @Model.Students[i].Id)
+                                        <td title="123" style="text-align:center;">@Model.Students[i].Number.</td>
+                                        @for (int j = 0; j < 7; j++)
+                                        {
+                                            <td>@Html.EditorFor(m => @Model.Students[i].Grades[j], new { htmlattributes = new { @class = "form-control" } })</td>
+                                        }
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        }
+        <!--End Advanced Tables -->
+        <!-- /. ROW  -->
+        <footer></footer>
+    </div>
+    <!-- /. PAGE INNER  -->
+</div>

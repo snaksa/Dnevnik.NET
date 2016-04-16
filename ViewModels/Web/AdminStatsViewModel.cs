@@ -11,5 +11,8 @@ namespace Dnevnik.ViewModels.Web
         public List<Student> Students { get; set; }
         public List<SubjectVM> Subjects { get; set; }
         public AttendanceStatsViewModel Attendance { get; set; }
+
+        public StatsViewModel Semester1 { get; set; }
+        public StatsViewModel Semester2 { get; set; }
     }
 }

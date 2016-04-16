@@ -18,6 +18,26 @@ namespace Dnevnik.Repositories.Repositories
             return subjects;
         }
 
+        public static List<Subject> GetSubjectsByClassAndSemester(int class_id, int semester)
+        {
+            var db = new DnevnikEntities();
+            var sb = db.Schedules.Where(s => s.Class_id == class_id && s.Semester == semester).Select(s => s.Subject).ToList();
+
+            List<Subject> subjects = new List<Subject>();
+            List<int> ids = new List<int>();
+            foreach (var item in sb)
+            {
+                if (!ids.Contains(item.Id))
+                {
+                    ids.Add(item.Id);
+                    subjects.Add(item);
+                }
+            }
+
+            db.Dispose();
+            return subjects;
+        }
+
         public static void AddSubject(string title, bool isZip)
         {
             using (var db = new DnevnikEntities())

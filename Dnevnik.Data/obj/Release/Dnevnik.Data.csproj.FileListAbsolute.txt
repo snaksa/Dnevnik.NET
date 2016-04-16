@@ -7,3 +7,4 @@ E:\Windows\Dnevnik.NET\Dnevnik.Data\bin\Release\EntityFramework.xml
 E:\Windows\Dnevnik.NET\Dnevnik.Data\bin\Release\EntityFramework.SqlServer.xml
 E:\Windows\Dnevnik.NET\Dnevnik.Data\obj\Release\Dnevnik.Data.dll
 E:\Windows\Dnevnik.NET\Dnevnik.Data\obj\Release\Dnevnik.Data.pdb
+E:\Windows\Dnevnik.NET\Dnevnik.Data\obj\Release\Dnevnik.Data.csprojResolveAssemblyReference.cache

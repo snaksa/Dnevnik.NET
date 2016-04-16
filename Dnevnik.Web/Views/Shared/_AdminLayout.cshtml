@@ -3,6 +3,8 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/x-icon" href="~/Content/assets/img/botevLogoIco.ico" />
+
     <title>@TempData["title"]</title>
     <!-- Bootstrap Styles-->
     @Styles.Render("~/Content/assets/css/bootstrap.css")
@@ -48,7 +50,7 @@
                     <li>
                         <div class="pageHeaderDiv">
                             <img src="~/Content/assets/img/userIcon.png" style="width: 25px;" />
-                            <span>@Request.Cookies["username"].Value @Request.Cookies["userClass"].Value</span>
+                            <span>@Request.Cookies["username"].Value (Админ)</span>
                         </div>
                     </li>
                     <li>
@@ -102,7 +104,7 @@
     <!-- /. WRAPPER  -->
     <!-- JS Scripts-->
     <!-- jQuery Js -->
-    
+
 
 
 </body>

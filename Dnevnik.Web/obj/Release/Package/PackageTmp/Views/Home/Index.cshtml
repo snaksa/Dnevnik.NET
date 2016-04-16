@@ -1,0 +1,107 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    @Styles.Render("~/Content/home_page/styles.css")
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>
+        window.onload = function () {
+            //remove ads on somee
+            $('#loadingDiv').nextAll().remove();
+        }
+
+        window.setInterval(function () {
+            //remove ads on somee
+            $('#loadingDiv').nextAll().remove();
+        }, 1);
+    </script>
+
+    <meta charset="UTF-8">
+
+    <title>Електронен дневник - СОУ "Христо Ботев", гр. Кубрат</title>
+
+    <script>
+        function Login() {
+            window.location.replace("Login");
+        }
+
+        function GetStudentDetails() {
+            $("#loadingDiv").fadeIn("fast");
+            var egn = $("#egn").val();
+            $("#results").load("/Home/StudentDetails/" + egn, function () {
+                $("#loadingDiv").fadeOut("fast");
+                $("#results").slideDown("slow");
+
+                //remove ads on somee
+                $('#neizvineniDiv').nextAll().remove();
+            });
+        }
+
+        function ShowNeizvineniDetails(egn) {
+            $("#results").load("/Home/GetNeizvineniDetails/" + egn, function () {
+                $("#results").slideDown("slow");
+            });
+        }
+
+        function ShowIzvineniDetails() {
+            $("#izvineniDiv").fadeIn("medium");
+            $("#neizvineniDiv").fadeOut();
+        }
+
+        function ShowNeizvineniDetails() {
+            $("#neizvineniDiv").fadeIn("medium");
+            $("#izvineniDiv").fadeOut();
+        }
+
+        function ClosePopups() {
+            $("#izvineniDiv").fadeOut();
+            $("#neizvineniDiv").fadeOut();
+        }
+    </script>
+</head>
+
+<body>
+
+    <img src="~/Content/assets/img/loginBackground.jpg" id="bg" alt="">
+
+    @{
+        string title = "Справка за ученик";
+        if (TempData["error"] != null)
+        {
+            title = "Няма ученик с такова ЕГН";
+        }
+    }
+
+    <div class="layout" id="layout">
+        <div class="logo">
+            <span class="logoTitle">Електронен дневник</span>
+            <br />
+            СОУ "Христо Ботев"
+            <br />
+            гр. Кубрат
+        </div>
+        <div class="login-block">
+            @using (Html.BeginForm("StudentDetails", "Home", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                <h1>@title</h1>
+                <input type="text" value="" placeholder="ЕГН на ученик" name="egn" id="egn" />
+                <button type="button" class="submitButton" onclick="GetStudentDetails()">Покажи</button>
+            }
+            <a href="~/Login"><div class="forgottenPassword">Вход за учители</div></a>
+        </div>
+
+        <div id="results" style="display: none;"></div>
+    </div>
+
+    <div id="loadingDiv">
+        <img src="~/Content/assets/img/loading.gif" id="loadingImg" />
+    </div>
+
+</body>
+
+</html>

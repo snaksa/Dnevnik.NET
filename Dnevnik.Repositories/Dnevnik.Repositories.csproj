@@ -54,6 +54,7 @@
     <Compile Include="AdminRepositories\TeachersRepository.cs" />
     <Compile Include="DB.cs" />
     <Compile Include="Helpers\StatsHelpers.cs" />
+    <Compile Include="MSExcel\ExcelWriter.cs" />
     <Compile Include="MSExcel\Write.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AttendanceRepository.cs" />

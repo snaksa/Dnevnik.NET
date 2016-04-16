@@ -1,4 +1,5 @@
 ﻿using Dnevnik.Data;
+using Dnevnik.Repositories.Helpers;
 using Dnevnik.Repositories.Repositories;
 using Dnevnik.ViewModels.Web;
 using System;
@@ -34,12 +35,34 @@ namespace Dnevnik.Web.Controllers.AdminControllers
 
                 var attendance = AttendanceRepository.CalculateClassAttendance(DateTime.Now.AddYears(-2), DateTime.Now.AddYears(2), class_id);
 
+                var stats1 = StatsHelpers.GetSubjectsStats(21, class_id, false);
+                var zipStats1 = StatsHelpers.GetSubjectsStats(21, class_id, true);
+
+                var stats2 = StatsHelpers.GetSubjectsStats(23, class_id, false);
+                var zipStats2 = StatsHelpers.GetSubjectsStats(23, class_id, true);
+
+                StatsViewModel vm1 = new StatsViewModel()
+                {
+                    AllSubjects = stats1,
+                    AllZipSubjects = zipStats1,
+                    Semester = 1
+                };
+
+                StatsViewModel vm2 = new StatsViewModel()
+                {
+                    AllSubjects = stats2,
+                    AllZipSubjects = zipStats2,
+                    Semester = 3
+                };
+
                 AdminStatsViewModel vm = new AdminStatsViewModel()
                 {
                     Students = students,
                     Subjects = subjects,
                     SelectedClass = studClass,
-                    Attendance = attendance
+                    Attendance = attendance,
+                    Semester1 = vm1,
+                    Semester2 = vm2
                 };
                 return View("ShowClass", vm);
             }

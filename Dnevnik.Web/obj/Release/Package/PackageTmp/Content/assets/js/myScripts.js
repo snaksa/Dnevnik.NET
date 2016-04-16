@@ -1,0 +1,3 @@
+﻿function ShowAddStudentTable() {
+    $("#addStudentDiv").slideToggle();
+}

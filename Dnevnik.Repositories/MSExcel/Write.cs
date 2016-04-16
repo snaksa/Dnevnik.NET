@@ -41,10 +41,25 @@ namespace Dnevnik.Repositories.MSExcel
                 newWorksheet = (Microsoft.Office.Interop.Excel.Worksheet)oXL.Application.Worksheets.Add();
                 newWorksheet.Name = cl.Number + DB.ConvertClassLetter(cl.Letter);
 
+                newWorksheet.Range[newWorksheet.Cells[2, 1], newWorksheet.Cells[2, 10]].Merge();
+                newWorksheet.Cells[2, 1] = cl.Number + DB.ConvertClassLetter(cl.Letter);
+
+
                 for (int p = 0; p <= 1; p++)
                 {
+                    int totalIzpitani = 0;
+                    int total2 = 0;
+                    int total3 = 0;
+                    int total4 = 0;
+                    int total5 = 0;
+                    int total6 = 0;
+                    int totalNeizpitani = 0;
+                    double totalAverage = 0;
+                    int totalGrades = 0;
+
                     int tableHeadersX = x - 2;
                     int tableHeadersY = y;
+                    var stats = Helpers.StatsHelpers.GetSubjectsStats(semester, cl.Id, Convert.ToBoolean(p));
 
                     newWorksheet.Range[newWorksheet.Cells[x - 3, 1], newWorksheet.Cells[x - 3, 10]].Merge();
                     if (p == 0)
@@ -93,7 +108,7 @@ namespace Dnevnik.Repositories.MSExcel
                     newWorksheet.Range[newWorksheet.Cells[tableHeadersX-1, 1], newWorksheet.Cells[tableHeadersX+1, 10]].Font.Bold = true;
 
 
-                    var stats = Helpers.StatsHelpers.GetSubjectsStats(semester, cl.Id, Convert.ToBoolean(p));
+                    
 
                     foreach (var subject in stats)
                     {
@@ -102,6 +117,7 @@ namespace Dnevnik.Repositories.MSExcel
                         newWorksheet.Cells[x, y] = subject.Subject.Title;
                         y++;
                         newWorksheet.Cells[x, y] = subject.StudentsWithGrades;
+                        totalIzpitani += subject.StudentsWithGrades;
                         y++;
 
                         for (int i = 2; i <= 6; i++)
@@ -112,17 +128,34 @@ namespace Dnevnik.Repositories.MSExcel
 
                         int studentsWithoutGrades = subject.AllStudents - subject.StudentsWithGrades;
                         newWorksheet.Cells[x, y] = studentsWithoutGrades;
+                        totalNeizpitani += studentsWithoutGrades;
                         y++;
-                        newWorksheet.Cells[x, y] = subject.Average;
+                        newWorksheet.Cells[x, y] = Math.Round(subject.Average, 2);
+                        if (subject.Average != 0)
+                        {
+                            totalAverage += subject.Average;
+                            totalGrades++;
+                        }
 
                         x++;
                         y = 1;
                         count++;
                     }
-                    newWorksheet.Range[newWorksheet.Cells[tableHeadersX - 1, 1], newWorksheet.Cells[x-1, 10]].Borders.LineStyle 
+
+                    newWorksheet.Cells[x, 2] = "Всичко";
+                    newWorksheet.Cells[x, 3] = totalIzpitani;
+                    newWorksheet.Cells[x, 4] = total2;
+                    newWorksheet.Cells[x, 5] = total3;
+                    newWorksheet.Cells[x, 6] = total4;
+                    newWorksheet.Cells[x, 7] = total5;
+                    newWorksheet.Cells[x, 8] = total6;
+                    newWorksheet.Cells[x, 9] = totalNeizpitani;
+                    newWorksheet.Cells[x, 10] = Math.Round(totalAverage / totalGrades, 2);
+
+                    newWorksheet.Range[newWorksheet.Cells[tableHeadersX - 1, 1], newWorksheet.Cells[x, 10]].Borders.LineStyle 
                         = Microsoft.Office.Interop.Excel.XlLineStyle.xlContinuous;
                     count = 1;
-                    x += 4;
+                    x += 5;
                     y = 1;
                 }
 

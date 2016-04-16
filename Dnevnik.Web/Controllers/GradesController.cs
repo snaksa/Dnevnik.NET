@@ -1,5 +1,6 @@
 ﻿using Dnevnik.Data;
 using Dnevnik.Repositories;
+using Dnevnik.Repositories.Repositories;
 using Dnevnik.ViewModels.Web;
 using System;
 using System.Collections.Generic;
@@ -16,8 +17,19 @@ namespace Dnevnik.Web.Controllers
         {
             if (semester == null)
             {
-                var subjects = DB.GetClassSubjects(this.CurrentUser.Class_id);
-                return View(subjects);
+                var subjects = ScheduleRepository.GetAllSchedule(this.CurrentUser.Class_id);
+                var s1 = SubjectsRepository.GetSubjectsByClassAndSemester(this.CurrentUser.Class_id, 1);
+                var s2 = SubjectsRepository.GetSubjectsByClassAndSemester(this.CurrentUser.Class_id, 2);
+                var allSubjects = SubjectsRepository.GetAllSubjects();
+
+                var vm = new GradesViewModel()
+                {
+                    Semester1 = s1,
+                    Semester2 = s2,
+                    AllSubjects = allSubjects
+                };
+
+                return View(vm);
             }
             else if (semester == 1)
             {

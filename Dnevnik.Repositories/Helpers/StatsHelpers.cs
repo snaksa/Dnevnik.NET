@@ -14,10 +14,28 @@ namespace Dnevnik.Repositories.Helpers
         {
             List<SubjectVM> subjects = new List<SubjectVM>();
             if (semester == 23)
-                subjects = DB.GetClassSubjects(class_id).Where(s => s.IsZip == isZip && s.Semester == semester % 20).ToList();
+            {
+                List<SubjectVM>[] sb = new List<SubjectVM>[2];
+                sb[0] = DB.GetClassSubjects(class_id).Where(s => s.IsZip == isZip && s.Semester == 1).ToList();
+                sb[1] = DB.GetClassSubjects(class_id).Where(s => s.IsZip == isZip && s.Semester == 2).ToList();
+
+                List<int> ids = new List<int>();
+
+                for (int i = 0; i <= 1; i++)
+                {
+                    foreach (var s in sb[i])
+                    {
+                        if (!ids.Contains(s.Id))
+                        {
+                            ids.Add(s.Id);
+                            subjects.Add(s);
+                        }
+                    }
+                }
+            }
             else
                 subjects = DB.GetClassSubjects(class_id).Where(s => s.IsZip == isZip && s.Semester == semester % 20).ToList();
-            
+
 
             var studentsCount = StatsRepository.GetAllStudentsCount(class_id);
             var grades = StatsRepository.GetAllGrades(class_id, semester);

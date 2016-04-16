@@ -14,16 +14,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/25/2015 18:59:05</publishTime>
     </File>
     <File Include="bin/Dnevnik.Data.dll">
-      <publishTime>03/13/2016 19:00:19</publishTime>
+      <publishTime>04/14/2016 21:48:46</publishTime>
     </File>
     <File Include="bin/Dnevnik.Repositories.dll">
-      <publishTime>03/15/2016 19:48:18</publishTime>
+      <publishTime>04/14/2016 21:48:51</publishTime>
     </File>
     <File Include="bin/Dnevnik.ViewModels.dll">
-      <publishTime>03/14/2016 21:25:02</publishTime>
+      <publishTime>04/14/2016 21:48:48</publishTime>
     </File>
     <File Include="bin/Dnevnik.Web.dll">
-      <publishTime>03/15/2016 19:48:19</publishTime>
+      <publishTime>04/14/2016 21:55:34</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>12/25/2015 18:59:10</publishTime>
@@ -203,7 +203,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/25/2015 19:41:26</publishTime>
     </File>
     <File Include="Content/assets/js/myScripts.js">
-      <publishTime>12/26/2015 14:04:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Content/bootstrap.css">
       <publishTime>12/29/2015 19:27:27</publishTime>
@@ -311,10 +311,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/26/2015 13:56:10</publishTime>
     </File>
     <File Include="Views/AdminStats/Show.cshtml">
-      <publishTime>03/05/2016 21:04:06</publishTime>
+      <publishTime>03/23/2016 19:41:51</publishTime>
     </File>
     <File Include="Views/AdminStats/ShowClass.cshtml">
-      <publishTime>03/14/2016 21:26:46</publishTime>
+      <publishTime>03/23/2016 19:38:17</publishTime>
     </File>
     <File Include="Views/AdminStudents/Show.cshtml">
       <publishTime>02/27/2016 16:18:51</publishTime>
@@ -332,7 +332,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/05/2016 21:05:00</publishTime>
     </File>
     <File Include="Views/Grades/Show.cshtml">
-      <publishTime>03/05/2016 21:04:53</publishTime>
+      <publishTime>04/14/2016 22:13:21</publishTime>
     </File>
     <File Include="Views/Home/About.cshtml">
       <publishTime>12/25/2015 19:22:25</publishTime>
@@ -374,10 +374,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/25/2015 18:59:09</publishTime>
     </File>
     <File Include="Views/Shared/_AdminLayout.cshtml">
-      <publishTime>02/26/2016 22:41:09</publishTime>
+      <publishTime>04/14/2016 22:03:29</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>02/26/2016 21:20:03</publishTime>
+      <publishTime>04/10/2016 11:17:48</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>12/25/2015 18:59:10</publishTime>
@@ -386,13 +386,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/05/2016 21:06:26</publishTime>
     </File>
     <File Include="Views/Stats/Show.cshtml">
-      <publishTime>03/05/2016 21:27:04</publishTime>
+      <publishTime>04/10/2016 11:16:47</publishTime>
     </File>
     <File Include="Views/Students/Show.cshtml">
-      <publishTime>03/05/2016 21:06:47</publishTime>
+      <publishTime>04/14/2016 22:06:20</publishTime>
     </File>
     <File Include="Views/Subjects/Show.cshtml">
-      <publishTime>03/05/2016 21:07:00</publishTime>
+      <publishTime>03/19/2016 19:17:34</publishTime>
     </File>
     <File Include="Views/Teachers/Show.cshtml">
       <publishTime>03/05/2016 21:07:10</publishTime>
@@ -404,7 +404,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/25/2015 18:58:52</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>03/05/2016 21:33:58</publishTime>
+      <publishTime>03/20/2016 20:52:29</publishTime>
     </File>
   </ItemGroup>
 </Project>
