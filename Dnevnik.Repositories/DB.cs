@@ -116,5 +116,41 @@
                 return id;
             }
         }
+
+        public static void DeleteAllStudents()
+        {
+            using (var db = new DnevnikEntities())
+            {
+                db.Students.RemoveRange(db.Students.Where(x => 1 == 1));
+                db.SaveChanges();
+            }
+        }
+
+        public static void DeleteAllAttendance()
+        {
+            using (var db = new DnevnikEntities())
+            {
+                db.Attendances.RemoveRange(db.Attendances.Where(x => 1 == 1));
+                db.SaveChanges();
+            }
+        }
+
+        public static void DeleteAllSchedule()
+        {
+            using (var db = new DnevnikEntities())
+            {
+                db.Schedules.RemoveRange(db.Schedules.Where(x => 1 == 1));
+                db.SaveChanges();
+            }
+        }
+
+        public static void DeleteAllGrades()
+        {
+            using (var db = new DnevnikEntities())
+            {
+                db.Grades.RemoveRange(db.Grades.Where(x => 1 == 1));
+                db.SaveChanges();
+            }
+        }
     }
 }

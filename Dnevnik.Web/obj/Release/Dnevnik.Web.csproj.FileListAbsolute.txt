@@ -7,8 +7,6 @@ E:\Windows\Dnevnik.NET\Dnevnik.Web\bin\Dnevnik.Repositories.dll
 E:\Windows\Dnevnik.NET\Dnevnik.Web\bin\Dnevnik.ViewModels.dll
 E:\Windows\Dnevnik.NET\Dnevnik.Web\bin\EntityFramework.dll
 E:\Windows\Dnevnik.NET\Dnevnik.Web\bin\EntityFramework.SqlServer.dll
-E:\Windows\Dnevnik.NET\Dnevnik.Web\bin\Excel.4.5.dll
-E:\Windows\Dnevnik.NET\Dnevnik.Web\bin\ICSharpCode.SharpZipLib.dll
 E:\Windows\Dnevnik.NET\Dnevnik.Web\bin\Microsoft.AspNet.Identity.Core.dll
 E:\Windows\Dnevnik.NET\Dnevnik.Web\bin\Microsoft.AspNet.Identity.EntityFramework.dll
 E:\Windows\Dnevnik.NET\Dnevnik.Web\bin\Microsoft.AspNet.Identity.Owin.dll

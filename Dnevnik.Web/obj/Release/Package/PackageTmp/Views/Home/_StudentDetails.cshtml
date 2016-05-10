@@ -8,11 +8,13 @@
         <div class="sectionTitle">Оценки</div>
     </div>
 
-    @{int count = 0;}
+    @{int count = 0;
+      bool closed = false;}
     @foreach (var subject in @Model.Subjects)
     {
         if (count % 3 == 0)
         {
+            closed = false;
             @:<div class="triple">
         }
         count++;
@@ -58,9 +60,16 @@
         </div>
         if (count % 3 == 0)
         {
+            closed = true;
             @:<div style="clear:both"></div>
-        @:</div>
+            @:</div>
         }
+    }
+
+    @if (!closed)
+    {
+       @:<div style="clear:both"></div>
+       @:</div>
     }
 
     <div class="studentSmallSection">
@@ -104,113 +113,113 @@
     </div>
 
     <div style="clear:both;"></div>
-</div>
-
-<div class="popupAttendance" id="izvineniDiv">
-    <div class="sectionTitle">Извинени</div>
-    <div class="popupContent">
-        <table>
-            <thead>
-            <th width="20%"></th>
-            <th width="10%"></th>
-            <th width="50%"></th>
-            <th></th>
-            </thead>
-            <tbody>
-                @{
-                    var izvineni = Model.CurrentStudent.Attendances.Where(a => a.Att_type == 2).OrderBy(a => a.Date1);
-
-                }
-                @foreach (var item in izvineni)
-                {
-                    <tr>
-                        <td align="center">@item.Date1.ToString("dd-MM-yyyy")</td>
-                        <td align="right">@item.Period.</td>
-                        <td>
-                            @{
-                    int day = (int)item.Date1.DayOfWeek;
-                    int month = (int)item.Date1.Month;
-
-                    string subject = "";
-                    if (month >= 2 && month <= 6)
-                    {
-                        subject = Model.Schedule2.Where(s => s.Day == day && s.Period == item.Period).Select(s => s.Subject.Title).FirstOrDefault();
-                    }
-                    else
-                    {
-                        subject = Model.Schedule1.Where(s => s.Day == day && s.Period == item.Period).Select(s => s.Subject.Title).FirstOrDefault();
-                    }
-                    if (subject == null)
-                    {
-                        subject = "---";
-                    }
-                            }
-                            @subject
-                        </td>
-                        <td>Извинено</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
     </div>
-    <button type="button" class="closePopupButton" onclick="ClosePopups()">Затвори</button>
-</div>
 
-<div class="popupAttendance" id="neizvineniDiv">
-    <div class="sectionTitle">Неизвинени</div>
-    <div class="popupContent">
-        <table>
-            <thead>
-            <th width="20%"></th>
-            <th width="10%"></th>
-            <th width="50%"></th>
-            <th></th>
-            </thead>
-            <tbody>
-                @{
-                    var neizvineni = Model.CurrentStudent.Attendances.Where(a => a.Att_type == 0 || a.Att_type == 1).OrderBy(a => a.Date1);
+    <div class="popupAttendance" id="izvineniDiv">
+        <div class="sectionTitle">Извинени</div>
+        <div class="popupContent">
+            <table>
+                <thead>
+                <th width="20%"></th>
+                <th width="10%"></th>
+                <th width="50%"></th>
+                <th></th>
+                </thead>
+                <tbody>
+                    @{
+                        var izvineni = Model.CurrentStudent.Attendances.Where(a => a.Att_type == 2).OrderBy(a => a.Date1);
 
-                }
-                @foreach (var item in neizvineni)
-                {
-                    <tr>
-                        <td align="center">@item.Date1.ToString("dd-MM-yyyy")</td>
-                        <td align="right">@item.Period.</td>
-                        <td>
-                            @{
-                    int day = (int)item.Date1.DayOfWeek;
-                    int month = (int)item.Date1.Month;
+                    }
+                    @foreach (var item in izvineni)
+                    {
+                        <tr>
+                            <td align="center">@item.Date1.ToString("dd-MM-yyyy")</td>
+                            <td align="right">@item.Period.</td>
+                            <td>
+                                @{
+                        int day = (int)item.Date1.DayOfWeek;
+                        int month = (int)item.Date1.Month;
 
-                    string subject = "";
-                    if (month >= 2 && month <= 6)
-                    {
-                        subject = Model.Schedule2.Where(s => s.Day == day && s.Period == item.Period).Select(s => s.Subject.Title).FirstOrDefault();
+                        string subject = "";
+                        if (month >= 2 && month <= 6)
+                        {
+                            subject = Model.Schedule2.Where(s => s.Day == day && s.Period == item.Period).Select(s => s.Subject.Title).FirstOrDefault();
+                        }
+                        else
+                        {
+                            subject = Model.Schedule1.Where(s => s.Day == day && s.Period == item.Period).Select(s => s.Subject.Title).FirstOrDefault();
+                        }
+                        if (subject == null)
+                        {
+                            subject = "---";
+                        }
+                                }
+                                @subject
+                            </td>
+                            <td>Извинено</td>
+                        </tr>
                     }
-                    else
-                    {
-                        subject = Model.Schedule1.Where(s => s.Day == day && s.Period == item.Period).Select(s => s.Subject.Title).FirstOrDefault();
-                    }
-                    if (subject == null)
-                    {
-                        subject = "---";
-                    }
-                            }
-                            @subject
-                        </td>
-                        <td>
-                            @if (item.Att_type == 0)
-                            {
-                                @:Цяло
-                            }
-                            else
-                            {
-                                @:Закъснение
-                            }
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </div>
+        <button type="button" class="closePopupButton" onclick="ClosePopups()">Затвори</button>
     </div>
-    <button type="button" class="closePopupButton" onclick="ClosePopups()">Затвори</button>
-</div>
+
+    <div class="popupAttendance" id="neizvineniDiv">
+        <div class="sectionTitle">Неизвинени</div>
+        <div class="popupContent">
+            <table>
+                <thead>
+                <th width="20%"></th>
+                <th width="10%"></th>
+                <th width="50%"></th>
+                <th></th>
+                </thead>
+                <tbody>
+                    @{
+                        var neizvineni = Model.CurrentStudent.Attendances.Where(a => a.Att_type == 0 || a.Att_type == 1).OrderBy(a => a.Date1);
+
+                    }
+                    @foreach (var item in neizvineni)
+                    {
+                        <tr>
+                            <td align="center">@item.Date1.ToString("dd-MM-yyyy")</td>
+                            <td align="right">@item.Period.</td>
+                            <td>
+                                @{
+                        int day = (int)item.Date1.DayOfWeek;
+                        int month = (int)item.Date1.Month;
+
+                        string subject = "";
+                        if (month >= 2 && month <= 6)
+                        {
+                            subject = Model.Schedule2.Where(s => s.Day == day && s.Period == item.Period).Select(s => s.Subject.Title).FirstOrDefault();
+                        }
+                        else
+                        {
+                            subject = Model.Schedule1.Where(s => s.Day == day && s.Period == item.Period).Select(s => s.Subject.Title).FirstOrDefault();
+                        }
+                        if (subject == null)
+                        {
+                            subject = "---";
+                        }
+                                }
+                                @subject
+                            </td>
+                            <td>
+                                @if (item.Att_type == 0)
+                                {
+                                    @:Цяло
+                            }
+                                else
+                                {
+                                    @:Закъснение
+                            }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <button type="button" class="closePopupButton" onclick="ClosePopups()">Затвори</button>
+    </div>
