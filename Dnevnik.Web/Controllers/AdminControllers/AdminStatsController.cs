@@ -24,7 +24,6 @@ namespace Dnevnik.Web.Controllers.AdminControllers
                 var students = StudentsRepository.GetAllStudents(class_id);
                 var subjects = DB.GetClassSubjects(class_id);
 
-                if (students.Count == 0 || subjects.Count == 0) return RedirectToAction("Show", "Teachers");
 
                 string studClass = students[0].Class.Number.ToString();
                 if (students[0].Class.Letter == 1) studClass += "a";
