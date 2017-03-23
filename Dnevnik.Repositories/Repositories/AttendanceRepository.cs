@@ -111,7 +111,14 @@ namespace Dnevnik.Repositories.Repositories
 
         public static AttendanceStatsViewModel CalculateClassAttendance(DateTime? dd1, DateTime? dd2, int class_id)
         {
-            DateTime d1 = new DateTime(DateTime.Now.Year, DateTime.Now.Month - 1, DateTime.Now.Day);
+            int month = DateTime.Now.Month - 1;
+            int year = DateTime.Now.Year;
+            if (month < 1)
+            {
+                month = 12;
+                year--;
+            }
+            DateTime d1 = new DateTime(year, month, DateTime.Now.Day);
             DateTime d2 = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
             
             if (dd1 != null)
