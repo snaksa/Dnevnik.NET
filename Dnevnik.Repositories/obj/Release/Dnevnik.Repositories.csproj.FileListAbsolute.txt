@@ -26,3 +26,17 @@ C:\Users\Sinan\Downloads\Dnevnik.NET-master\Dnevnik.Repositories\bin\Release\Ent
 C:\Users\Sinan\Downloads\Dnevnik.NET-master\Dnevnik.Repositories\obj\Release\Dnevnik.Repositories.csprojResolveAssemblyReference.cache
 C:\Users\Sinan\Downloads\Dnevnik.NET-master\Dnevnik.Repositories\obj\Release\Dnevnik.Repositories.dll
 C:\Users\Sinan\Downloads\Dnevnik.NET-master\Dnevnik.Repositories\obj\Release\Dnevnik.Repositories.pdb
+C:\Users\Sinan\Documents\Dnevnik.NET\Dnevnik.Repositories\bin\Release\Dnevnik.Repositories.dll.config
+C:\Users\Sinan\Documents\Dnevnik.NET\Dnevnik.Repositories\bin\Release\Dnevnik.Repositories.dll
+C:\Users\Sinan\Documents\Dnevnik.NET\Dnevnik.Repositories\bin\Release\Dnevnik.Repositories.pdb
+C:\Users\Sinan\Documents\Dnevnik.NET\Dnevnik.Repositories\bin\Release\Dnevnik.Data.dll
+C:\Users\Sinan\Documents\Dnevnik.NET\Dnevnik.Repositories\bin\Release\Dnevnik.ViewModels.dll
+C:\Users\Sinan\Documents\Dnevnik.NET\Dnevnik.Repositories\bin\Release\EntityFramework.dll
+C:\Users\Sinan\Documents\Dnevnik.NET\Dnevnik.Repositories\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\Sinan\Documents\Dnevnik.NET\Dnevnik.Repositories\bin\Release\Dnevnik.Data.pdb
+C:\Users\Sinan\Documents\Dnevnik.NET\Dnevnik.Repositories\bin\Release\Dnevnik.ViewModels.pdb
+C:\Users\Sinan\Documents\Dnevnik.NET\Dnevnik.Repositories\bin\Release\EntityFramework.xml
+C:\Users\Sinan\Documents\Dnevnik.NET\Dnevnik.Repositories\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\Sinan\Documents\Dnevnik.NET\Dnevnik.Repositories\obj\Release\Dnevnik.Repositories.csprojResolveAssemblyReference.cache
+C:\Users\Sinan\Documents\Dnevnik.NET\Dnevnik.Repositories\obj\Release\Dnevnik.Repositories.dll
+C:\Users\Sinan\Documents\Dnevnik.NET\Dnevnik.Repositories\obj\Release\Dnevnik.Repositories.pdb

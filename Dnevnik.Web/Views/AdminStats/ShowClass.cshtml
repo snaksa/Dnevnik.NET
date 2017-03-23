@@ -69,9 +69,10 @@
                                         <td style="text-align: center;">@String.Join(";", student.Grades.Where(s => s.Grade_month == i && s.Subject_id == subject.Id).Select(g => g.Grade1))</td>
                                         }
 
+                                        <td style="text-align: center;">@String.Join(";", student.Grades.Where(s => s.Grade_month == 1 && s.Subject_id == subject.Id).Select(g => g.Grade1))</td>
                                         <td style="text-align: center;">@String.Join(";", student.Grades.Where(s => s.Grade_month == 21 && s.Subject_id == subject.Id).Select(g => g.Grade1))</td>
 
-                                        @for (int i = 1; i <= 6; i++)
+                                        @for (int i = 2; i <= 6; i++)
                                         {
                                             <td style="text-align: center;">@String.Join(";", student.Grades.Where(s => s.Grade_month == i && s.Subject_id == subject.Id).Select(g => g.Grade1))</td>
                                         }

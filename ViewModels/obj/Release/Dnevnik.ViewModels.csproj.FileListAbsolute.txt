@@ -16,3 +16,12 @@ C:\Users\Sinan\Downloads\Dnevnik.NET-master\ViewModels\bin\Release\EntityFramewo
 C:\Users\Sinan\Downloads\Dnevnik.NET-master\ViewModels\obj\Release\Dnevnik.ViewModels.csprojResolveAssemblyReference.cache
 C:\Users\Sinan\Downloads\Dnevnik.NET-master\ViewModels\obj\Release\Dnevnik.ViewModels.dll
 C:\Users\Sinan\Downloads\Dnevnik.NET-master\ViewModels\obj\Release\Dnevnik.ViewModels.pdb
+C:\Users\Sinan\Documents\Dnevnik.NET\ViewModels\bin\Release\Dnevnik.ViewModels.dll
+C:\Users\Sinan\Documents\Dnevnik.NET\ViewModels\bin\Release\Dnevnik.ViewModels.pdb
+C:\Users\Sinan\Documents\Dnevnik.NET\ViewModels\bin\Release\Dnevnik.Data.dll
+C:\Users\Sinan\Documents\Dnevnik.NET\ViewModels\bin\Release\EntityFramework.dll
+C:\Users\Sinan\Documents\Dnevnik.NET\ViewModels\bin\Release\Dnevnik.Data.pdb
+C:\Users\Sinan\Documents\Dnevnik.NET\ViewModels\bin\Release\EntityFramework.xml
+C:\Users\Sinan\Documents\Dnevnik.NET\ViewModels\obj\Release\Dnevnik.ViewModels.csprojResolveAssemblyReference.cache
+C:\Users\Sinan\Documents\Dnevnik.NET\ViewModels\obj\Release\Dnevnik.ViewModels.dll
+C:\Users\Sinan\Documents\Dnevnik.NET\ViewModels\obj\Release\Dnevnik.ViewModels.pdb
